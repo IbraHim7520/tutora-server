@@ -13,16 +13,26 @@ datasource db {
   provider = "postgresql"
 }
 
+enum UserRole {
+  STUDENT
+  ADMIN
+  TEACHER
+}
+
 model User {
-  id            String    @id
+  id            String     @id
   name          String
   email         String
-  emailVerified Boolean   @default(false)
+  emailVerified Boolean    @default(false)
+  role          UserRole   @default(STUDENT)
+  isBanned      Boolean    @default(false)
   image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
   sessions      Session[]
   accounts      Account[]
+  tutors        Tutor?
+  bookings      Bookings[]
 
   @@unique([email])
   @@map("user")
@@ -74,4 +84,87 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+model Tutor {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  designation String
+  degree      String
+  isBanned    Boolean  @default(false)
+  experience  Int      @default(0)
+  createdAt   DateTime
+  updatedAt   DateTime
+
+  categories Category[]
+
+  tutorSessions TutorSession[]
+}
+
+model Category {
+  id          String   @id @default(uuid())
+  title       String
+  tutorId     String
+  tutor       Tutor    @relation(fields: [tutorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  description String
+  createdAt   DateTime
+  updatedAt   DateTime
+
+  tutorSessions TutorSession[]
+
+  bookings Bookings[]
+}
+
+enum SessionStatus {
+  APPROVED
+  BANNED
+  PENDING
+}
+
+model TutorSession {
+  id          String        @id @default(uuid())
+  title       String
+  description String
+  date        DateTime
+  fromTime    DateTime
+  toTole      DateTime
+  sessionFee  Int
+  status      SessionStatus @default(PENDING)
+  categoryId  String
+  category    Category      @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  tutorId String
+  tutor   Tutor  @relation(fields: [tutorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  createdAt DateTime
+  updatedAt DateTime
+
+  bookings Bookings[]
+}
+
+enum BookingStatus {
+  BOOKED
+  CANCELED
+}
+
+model Bookings {
+  id     String @id @default(uuid())
+  userId String
+  use    User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  tutorSessionId String
+  tutorSession   TutorSession @relation(fields: [tutorSessionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  status BookingStatus @default(BOOKED)
+
+  bookedAt DateTime
+  fromTime DateTime
+  toTime   DateTime
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  createdAt DateTime
+  updatedAt DateTime
 }
