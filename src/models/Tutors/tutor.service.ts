@@ -58,6 +58,33 @@ const createTutor = async (payload: ITutor) => {
   }
 };
 
+
+
+const getALlTutors = async()=>{
+  return await prisma.tutor.findMany({
+    where:{
+      isBanned: false
+    },
+    include: {
+      user:{
+         select: {
+          email: true,
+          role: true,
+          image: true,
+          isBanned: true
+        }
+      }
+    }
+  })
+}
+
+
+
+
+
+
+
 export const tutorService = {
   createTutor,
+  getALlTutors
 };
