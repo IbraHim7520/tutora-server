@@ -250,8 +250,8 @@ export type CategoryCreateInput = {
   id?: string
   title: string
   description: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tutor: Prisma.TutorCreateNestedOneWithoutCategoriesInput
   tutorSessions?: Prisma.TutorSessionCreateNestedManyWithoutCategoryInput
   bookings?: Prisma.BookingsCreateNestedManyWithoutCategoryInput
@@ -262,8 +262,8 @@ export type CategoryUncheckedCreateInput = {
   title: string
   tutorId: string
   description: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tutorSessions?: Prisma.TutorSessionUncheckedCreateNestedManyWithoutCategoryInput
   bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutCategoryInput
 }
@@ -295,8 +295,8 @@ export type CategoryCreateManyInput = {
   title: string
   tutorId: string
   description: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CategoryUpdateManyMutationInput = {
@@ -432,8 +432,8 @@ export type CategoryCreateWithoutTutorInput = {
   id?: string
   title: string
   description: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tutorSessions?: Prisma.TutorSessionCreateNestedManyWithoutCategoryInput
   bookings?: Prisma.BookingsCreateNestedManyWithoutCategoryInput
 }
@@ -442,8 +442,8 @@ export type CategoryUncheckedCreateWithoutTutorInput = {
   id?: string
   title: string
   description: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tutorSessions?: Prisma.TutorSessionUncheckedCreateNestedManyWithoutCategoryInput
   bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutCategoryInput
 }
@@ -490,8 +490,8 @@ export type CategoryCreateWithoutTutorSessionsInput = {
   id?: string
   title: string
   description: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tutor: Prisma.TutorCreateNestedOneWithoutCategoriesInput
   bookings?: Prisma.BookingsCreateNestedManyWithoutCategoryInput
 }
@@ -501,8 +501,8 @@ export type CategoryUncheckedCreateWithoutTutorSessionsInput = {
   title: string
   tutorId: string
   description: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutCategoryInput
 }
 
@@ -546,8 +546,8 @@ export type CategoryCreateWithoutBookingsInput = {
   id?: string
   title: string
   description: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tutor: Prisma.TutorCreateNestedOneWithoutCategoriesInput
   tutorSessions?: Prisma.TutorSessionCreateNestedManyWithoutCategoryInput
 }
@@ -557,8 +557,8 @@ export type CategoryUncheckedCreateWithoutBookingsInput = {
   title: string
   tutorId: string
   description: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tutorSessions?: Prisma.TutorSessionUncheckedCreateNestedManyWithoutCategoryInput
 }
 
@@ -602,8 +602,8 @@ export type CategoryCreateManyTutorInput = {
   id?: string
   title: string
   description: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CategoryUpdateWithoutTutorInput = {

@@ -94,8 +94,8 @@ model Tutor {
   degree      String
   isBanned    Boolean  @default(false)
   experience  Int      @default(0)
-  createdAt   DateTime
-  updatedAt   DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
 
   categories Category[]
 
@@ -108,8 +108,8 @@ model Category {
   tutorId     String
   tutor       Tutor    @relation(fields: [tutorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   description String
-  createdAt   DateTime
-  updatedAt   DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
 
   tutorSessions TutorSession[]
 
@@ -137,8 +137,8 @@ model TutorSession {
   tutorId String
   tutor   Tutor  @relation(fields: [tutorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-  createdAt DateTime
-  updatedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 
   bookings Bookings[]
 }
@@ -158,13 +158,13 @@ model Bookings {
 
   status BookingStatus @default(BOOKED)
 
-  bookedAt DateTime
+  bookedAt DateTime @default(now())
   fromTime DateTime
   toTime   DateTime
 
   categoryId String
   category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-  createdAt DateTime
-  updatedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }

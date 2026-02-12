@@ -363,8 +363,8 @@ export type TutorSessionCreateInput = {
   toTole: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutTutorSessionsInput
   tutor: Prisma.TutorCreateNestedOneWithoutTutorSessionsInput
   bookings?: Prisma.BookingsCreateNestedManyWithoutTutorSessionInput
@@ -381,8 +381,8 @@ export type TutorSessionUncheckedCreateInput = {
   status?: $Enums.SessionStatus
   categoryId: string
   tutorId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutTutorSessionInput
 }
 
@@ -429,8 +429,8 @@ export type TutorSessionCreateManyInput = {
   status?: $Enums.SessionStatus
   categoryId: string
   tutorId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TutorSessionUpdateManyMutationInput = {
@@ -640,8 +640,8 @@ export type TutorSessionCreateWithoutTutorInput = {
   toTole: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutTutorSessionsInput
   bookings?: Prisma.BookingsCreateNestedManyWithoutTutorSessionInput
 }
@@ -656,8 +656,8 @@ export type TutorSessionUncheckedCreateWithoutTutorInput = {
   sessionFee: number
   status?: $Enums.SessionStatus
   categoryId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutTutorSessionInput
 }
 
@@ -714,8 +714,8 @@ export type TutorSessionCreateWithoutCategoryInput = {
   toTole: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tutor: Prisma.TutorCreateNestedOneWithoutTutorSessionsInput
   bookings?: Prisma.BookingsCreateNestedManyWithoutTutorSessionInput
 }
@@ -730,8 +730,8 @@ export type TutorSessionUncheckedCreateWithoutCategoryInput = {
   sessionFee: number
   status?: $Enums.SessionStatus
   tutorId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutTutorSessionInput
 }
 
@@ -770,8 +770,8 @@ export type TutorSessionCreateWithoutBookingsInput = {
   toTole: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutTutorSessionsInput
   tutor: Prisma.TutorCreateNestedOneWithoutTutorSessionsInput
 }
@@ -787,8 +787,8 @@ export type TutorSessionUncheckedCreateWithoutBookingsInput = {
   status?: $Enums.SessionStatus
   categoryId: string
   tutorId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TutorSessionCreateOrConnectWithoutBookingsInput = {
@@ -847,8 +847,8 @@ export type TutorSessionCreateManyTutorInput = {
   sessionFee: number
   status?: $Enums.SessionStatus
   categoryId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TutorSessionUpdateWithoutTutorInput = {
@@ -905,8 +905,8 @@ export type TutorSessionCreateManyCategoryInput = {
   sessionFee: number
   status?: $Enums.SessionStatus
   tutorId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TutorSessionUpdateWithoutCategoryInput = {

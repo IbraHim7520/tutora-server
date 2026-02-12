@@ -312,8 +312,8 @@ export type TutorCreateInput = {
   degree: string
   isBanned?: boolean
   experience?: number
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutTutorsInput
   categories?: Prisma.CategoryCreateNestedManyWithoutTutorInput
   tutorSessions?: Prisma.TutorSessionCreateNestedManyWithoutTutorInput
@@ -326,8 +326,8 @@ export type TutorUncheckedCreateInput = {
   degree: string
   isBanned?: boolean
   experience?: number
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutTutorInput
   tutorSessions?: Prisma.TutorSessionUncheckedCreateNestedManyWithoutTutorInput
 }
@@ -365,8 +365,8 @@ export type TutorCreateManyInput = {
   degree: string
   isBanned?: boolean
   experience?: number
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TutorUpdateManyMutationInput = {
@@ -515,8 +515,8 @@ export type TutorCreateWithoutUserInput = {
   degree: string
   isBanned?: boolean
   experience?: number
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   categories?: Prisma.CategoryCreateNestedManyWithoutTutorInput
   tutorSessions?: Prisma.TutorSessionCreateNestedManyWithoutTutorInput
 }
@@ -527,8 +527,8 @@ export type TutorUncheckedCreateWithoutUserInput = {
   degree: string
   isBanned?: boolean
   experience?: number
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutTutorInput
   tutorSessions?: Prisma.TutorSessionUncheckedCreateNestedManyWithoutTutorInput
 }
@@ -579,8 +579,8 @@ export type TutorCreateWithoutCategoriesInput = {
   degree: string
   isBanned?: boolean
   experience?: number
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutTutorsInput
   tutorSessions?: Prisma.TutorSessionCreateNestedManyWithoutTutorInput
 }
@@ -592,8 +592,8 @@ export type TutorUncheckedCreateWithoutCategoriesInput = {
   degree: string
   isBanned?: boolean
   experience?: number
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tutorSessions?: Prisma.TutorSessionUncheckedCreateNestedManyWithoutTutorInput
 }
 
@@ -643,8 +643,8 @@ export type TutorCreateWithoutTutorSessionsInput = {
   degree: string
   isBanned?: boolean
   experience?: number
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutTutorsInput
   categories?: Prisma.CategoryCreateNestedManyWithoutTutorInput
 }
@@ -656,8 +656,8 @@ export type TutorUncheckedCreateWithoutTutorSessionsInput = {
   degree: string
   isBanned?: boolean
   experience?: number
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutTutorInput
 }
 

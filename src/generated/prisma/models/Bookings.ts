@@ -297,11 +297,11 @@ export type BookingsScalarWhereWithAggregatesInput = {
 export type BookingsCreateInput = {
   id?: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   use: Prisma.UserCreateNestedOneWithoutBookingsInput
   tutorSession: Prisma.TutorSessionCreateNestedOneWithoutBookingsInput
   category: Prisma.CategoryCreateNestedOneWithoutBookingsInput
@@ -312,12 +312,12 @@ export type BookingsUncheckedCreateInput = {
   userId: string
   tutorSessionId: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
   categoryId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BookingsUpdateInput = {
@@ -351,12 +351,12 @@ export type BookingsCreateManyInput = {
   userId: string
   tutorSessionId: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
   categoryId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BookingsUpdateManyMutationInput = {
@@ -564,11 +564,11 @@ export type EnumBookingStatusFieldUpdateOperationsInput = {
 export type BookingsCreateWithoutUseInput = {
   id?: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tutorSession: Prisma.TutorSessionCreateNestedOneWithoutBookingsInput
   category: Prisma.CategoryCreateNestedOneWithoutBookingsInput
 }
@@ -577,12 +577,12 @@ export type BookingsUncheckedCreateWithoutUseInput = {
   id?: string
   tutorSessionId: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
   categoryId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BookingsCreateOrConnectWithoutUseInput = {
@@ -630,11 +630,11 @@ export type BookingsScalarWhereInput = {
 export type BookingsCreateWithoutCategoryInput = {
   id?: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   use: Prisma.UserCreateNestedOneWithoutBookingsInput
   tutorSession: Prisma.TutorSessionCreateNestedOneWithoutBookingsInput
 }
@@ -644,11 +644,11 @@ export type BookingsUncheckedCreateWithoutCategoryInput = {
   userId: string
   tutorSessionId: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BookingsCreateOrConnectWithoutCategoryInput = {
@@ -680,11 +680,11 @@ export type BookingsUpdateManyWithWhereWithoutCategoryInput = {
 export type BookingsCreateWithoutTutorSessionInput = {
   id?: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   use: Prisma.UserCreateNestedOneWithoutBookingsInput
   category: Prisma.CategoryCreateNestedOneWithoutBookingsInput
 }
@@ -693,12 +693,12 @@ export type BookingsUncheckedCreateWithoutTutorSessionInput = {
   id?: string
   userId: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
   categoryId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BookingsCreateOrConnectWithoutTutorSessionInput = {
@@ -731,12 +731,12 @@ export type BookingsCreateManyUseInput = {
   id?: string
   tutorSessionId: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
   categoryId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BookingsUpdateWithoutUseInput = {
@@ -780,11 +780,11 @@ export type BookingsCreateManyCategoryInput = {
   userId: string
   tutorSessionId: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BookingsUpdateWithoutCategoryInput = {
@@ -827,12 +827,12 @@ export type BookingsCreateManyTutorSessionInput = {
   id?: string
   userId: string
   status?: $Enums.BookingStatus
-  bookedAt: Date | string
+  bookedAt?: Date | string
   fromTime: Date | string
   toTime: Date | string
   categoryId: string
-  createdAt: Date | string
-  updatedAt: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BookingsUpdateWithoutTutorSessionInput = {
