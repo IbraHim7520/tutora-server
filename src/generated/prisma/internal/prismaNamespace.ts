@@ -1151,8 +1151,6 @@ export const BookingsScalarFieldEnum = {
   tutorSessionId: 'tutorSessionId',
   status: 'status',
   bookedAt: 'bookedAt',
-  fromTime: 'fromTime',
-  toTime: 'toTime',
   categoryId: 'categoryId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

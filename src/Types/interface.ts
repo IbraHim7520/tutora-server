@@ -1,4 +1,4 @@
-import { UserRole } from "../generated/prisma/enums"
+import { BookingStatus, UserRole } from "../generated/prisma/enums"
 
 export interface ICreateCategory {
     title:string,
@@ -45,4 +45,12 @@ export interface ITeachingSessionDataUpdate {
     sessionFee?: number
     categoryId?: string
     tutorId?: string
+}
+
+
+export interface IBooking {
+  userId: string
+  tutorSessionId: string
+  categoryId: string,
+  status?: BookingStatus
 }

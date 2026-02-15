@@ -29,7 +29,8 @@ export type SessionStatus = (typeof SessionStatus)[keyof typeof SessionStatus]
 
 export const BookingStatus = {
   BOOKED: 'BOOKED',
-  CANCELED: 'CANCELED'
+  CANCELED: 'CANCELED',
+  COMPLETED: 'COMPLETED'
 } as const
 
 export type BookingStatus = (typeof BookingStatus)[keyof typeof BookingStatus]

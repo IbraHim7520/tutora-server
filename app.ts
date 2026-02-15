@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser";
 import tutorRouter from './src/models/Tutors/tutor.route'
 import userRouter from './src/models/Users/user.route';
 import catRouter from './src/models/Catgory/cateory.route';
+import sessionRouter from './src/models/TeachingSessions/tsession.route';
+import bookingRouter from './src/models/Bookings/booking.route';
 const app:Application = express()
 
 app.use(
@@ -27,5 +29,6 @@ app.use(express.json())
 app.use('/api/v1/tutors/', tutorRouter)
 app.use('/api/v1/users/', userRouter)
 app.use('/api/v1/categories', catRouter);
-
+app.use('/api/v1/tutoring-sessions', sessionRouter)
+app.use('/api/v1/bookings', bookingRouter);
 export default app

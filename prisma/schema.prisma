@@ -143,12 +143,14 @@ model TutorSession {
 enum BookingStatus {
   BOOKED
   CANCELED
+  COMPLETED
 }
 
 model Bookings {
   id     String @id @default(uuid())
+  
   userId String
-  use    User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   tutorSessionId String
   tutorSession   TutorSession @relation(fields: [tutorSessionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
@@ -156,8 +158,6 @@ model Bookings {
   status BookingStatus @default(BOOKED)
 
   bookedAt DateTime @default(now())
-  fromTime DateTime
-  toTime   DateTime
 
   categoryId String
   category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)

@@ -298,7 +298,7 @@ export type UserCreateInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   tutors?: Prisma.TutorCreateNestedOneWithoutUserInput
-  bookings?: Prisma.BookingsCreateNestedManyWithoutUseInput
+  bookings?: Prisma.BookingsCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -314,7 +314,7 @@ export type UserUncheckedCreateInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   tutors?: Prisma.TutorUncheckedCreateNestedOneWithoutUserInput
-  bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutUseInput
+  bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -330,7 +330,7 @@ export type UserUpdateInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   tutors?: Prisma.TutorUpdateOneWithoutUserNestedInput
-  bookings?: Prisma.BookingsUpdateManyWithoutUseNestedInput
+  bookings?: Prisma.BookingsUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -346,7 +346,7 @@ export type UserUncheckedUpdateInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   tutors?: Prisma.TutorUncheckedUpdateOneWithoutUserNestedInput
-  bookings?: Prisma.BookingsUncheckedUpdateManyWithoutUseNestedInput
+  bookings?: Prisma.BookingsUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -514,7 +514,7 @@ export type UserCreateWithoutSessionsInput = {
   updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   tutors?: Prisma.TutorCreateNestedOneWithoutUserInput
-  bookings?: Prisma.BookingsCreateNestedManyWithoutUseInput
+  bookings?: Prisma.BookingsCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -529,7 +529,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   tutors?: Prisma.TutorUncheckedCreateNestedOneWithoutUserInput
-  bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutUseInput
+  bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -560,7 +560,7 @@ export type UserUpdateWithoutSessionsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   tutors?: Prisma.TutorUpdateOneWithoutUserNestedInput
-  bookings?: Prisma.BookingsUpdateManyWithoutUseNestedInput
+  bookings?: Prisma.BookingsUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -575,7 +575,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   tutors?: Prisma.TutorUncheckedUpdateOneWithoutUserNestedInput
-  bookings?: Prisma.BookingsUncheckedUpdateManyWithoutUseNestedInput
+  bookings?: Prisma.BookingsUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -590,7 +590,7 @@ export type UserCreateWithoutAccountsInput = {
   updatedAt?: Date | string
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   tutors?: Prisma.TutorCreateNestedOneWithoutUserInput
-  bookings?: Prisma.BookingsCreateNestedManyWithoutUseInput
+  bookings?: Prisma.BookingsCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -605,7 +605,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   updatedAt?: Date | string
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   tutors?: Prisma.TutorUncheckedCreateNestedOneWithoutUserInput
-  bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutUseInput
+  bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -636,7 +636,7 @@ export type UserUpdateWithoutAccountsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   tutors?: Prisma.TutorUpdateOneWithoutUserNestedInput
-  bookings?: Prisma.BookingsUpdateManyWithoutUseNestedInput
+  bookings?: Prisma.BookingsUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -651,7 +651,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   tutors?: Prisma.TutorUncheckedUpdateOneWithoutUserNestedInput
-  bookings?: Prisma.BookingsUncheckedUpdateManyWithoutUseNestedInput
+  bookings?: Prisma.BookingsUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutTutorsInput = {
@@ -666,7 +666,7 @@ export type UserCreateWithoutTutorsInput = {
   updatedAt?: Date | string
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  bookings?: Prisma.BookingsCreateNestedManyWithoutUseInput
+  bookings?: Prisma.BookingsCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTutorsInput = {
@@ -681,7 +681,7 @@ export type UserUncheckedCreateWithoutTutorsInput = {
   updatedAt?: Date | string
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutUseInput
+  bookings?: Prisma.BookingsUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTutorsInput = {
@@ -712,7 +712,7 @@ export type UserUpdateWithoutTutorsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  bookings?: Prisma.BookingsUpdateManyWithoutUseNestedInput
+  bookings?: Prisma.BookingsUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTutorsInput = {
@@ -727,7 +727,7 @@ export type UserUncheckedUpdateWithoutTutorsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  bookings?: Prisma.BookingsUncheckedUpdateManyWithoutUseNestedInput
+  bookings?: Prisma.BookingsUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBookingsInput = {
