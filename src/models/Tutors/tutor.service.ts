@@ -1,6 +1,7 @@
 import { prisma } from "../../lib/prisma";
 import { auth } from "../../lib/auth";
 import { UserRole } from "../../generated/prisma/enums";
+import { IUpdateTutorData } from "../../Types/interface";
 
 interface ITutor {
   userId?: string;
@@ -36,8 +37,7 @@ const createTutor = async (payload: ITutor) => {
         designation,
         degree,
         experience: experience ?? 0,  // default to 0 if undefined
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: new Date()
       },
     });
 
@@ -73,6 +73,17 @@ const getALlTutors = async()=>{
           image: true,
           isBanned: true
         }
+      },
+      tutorSessions: {
+        select:{
+          id: true,
+          title:true,
+          description:true,
+          date:true,
+          fromTime:true,
+          toTole:true,
+          sessionFee:true,
+        }
       }
     }
   })
@@ -80,11 +91,66 @@ const getALlTutors = async()=>{
 
 
 
+const deleteTutorProfile = async(tutorId: string)=>{
+  const isTutorExists = await prisma.tutor.findUnique({
+     where:{
+      id: tutorId
+     }
+  })
+  if(!isTutorExists) throw new Error('Tutor is not exists!!');
+
+  const userId = isTutorExists.userId;
+
+    const deleteResult = await prisma.$transaction(async(tx)=>{
+      const res = await tx.tutor.update({
+        where:{
+          id: tutorId
+        },
+        data:{
+          isBanned: true
+        }
+      })
+
+      await tx.session.deleteMany({
+        where:{
+          userId: userId
+        }
+      })
+
+      return res
+    })
+
+    return deleteResult;
+
+    
+  
+}
 
 
+const updateTutor = async(tutorId:string , tutorData: IUpdateTutorData)=>{
+  const isTutorExists = await prisma.tutor.findUnique({
+     where:{
+      id: tutorId
+     }
+  })
+  if(!isTutorExists) throw new Error('Tutor is not exists!!');
 
+  const updateResponse = await prisma.tutor.update({
+    where: {
+      id: tutorId
+    },data:{
+      designation: tutorData.designation,
+      degree: tutorData.degree,
+      experience: Number(tutorData.experience)
+    }
+  })
+
+  return updateResponse
+}
 
 export const tutorService = {
   createTutor,
-  getALlTutors
+  getALlTutors,
+  deleteTutorProfile,
+  updateTutor
 };

@@ -241,7 +241,6 @@ export type TutorWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Tutor"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Tutor"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  categories?: Prisma.CategoryListRelationFilter
   tutorSessions?: Prisma.TutorSessionListRelationFilter
 }
 
@@ -255,7 +254,6 @@ export type TutorOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
-  categories?: Prisma.CategoryOrderByRelationAggregateInput
   tutorSessions?: Prisma.TutorSessionOrderByRelationAggregateInput
 }
 
@@ -272,7 +270,6 @@ export type TutorWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Tutor"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Tutor"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  categories?: Prisma.CategoryListRelationFilter
   tutorSessions?: Prisma.TutorSessionListRelationFilter
 }, "id" | "userId">
 
@@ -315,7 +312,6 @@ export type TutorCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutTutorsInput
-  categories?: Prisma.CategoryCreateNestedManyWithoutTutorInput
   tutorSessions?: Prisma.TutorSessionCreateNestedManyWithoutTutorInput
 }
 
@@ -328,7 +324,6 @@ export type TutorUncheckedCreateInput = {
   experience?: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutTutorInput
   tutorSessions?: Prisma.TutorSessionUncheckedCreateNestedManyWithoutTutorInput
 }
 
@@ -341,7 +336,6 @@ export type TutorUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutTutorsNestedInput
-  categories?: Prisma.CategoryUpdateManyWithoutTutorNestedInput
   tutorSessions?: Prisma.TutorSessionUpdateManyWithoutTutorNestedInput
 }
 
@@ -354,7 +348,6 @@ export type TutorUncheckedUpdateInput = {
   experience?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  categories?: Prisma.CategoryUncheckedUpdateManyWithoutTutorNestedInput
   tutorSessions?: Prisma.TutorSessionUncheckedUpdateManyWithoutTutorNestedInput
 }
 
@@ -481,20 +474,6 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type TutorCreateNestedOneWithoutCategoriesInput = {
-  create?: Prisma.XOR<Prisma.TutorCreateWithoutCategoriesInput, Prisma.TutorUncheckedCreateWithoutCategoriesInput>
-  connectOrCreate?: Prisma.TutorCreateOrConnectWithoutCategoriesInput
-  connect?: Prisma.TutorWhereUniqueInput
-}
-
-export type TutorUpdateOneRequiredWithoutCategoriesNestedInput = {
-  create?: Prisma.XOR<Prisma.TutorCreateWithoutCategoriesInput, Prisma.TutorUncheckedCreateWithoutCategoriesInput>
-  connectOrCreate?: Prisma.TutorCreateOrConnectWithoutCategoriesInput
-  upsert?: Prisma.TutorUpsertWithoutCategoriesInput
-  connect?: Prisma.TutorWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TutorUpdateToOneWithWhereWithoutCategoriesInput, Prisma.TutorUpdateWithoutCategoriesInput>, Prisma.TutorUncheckedUpdateWithoutCategoriesInput>
-}
-
 export type TutorCreateNestedOneWithoutTutorSessionsInput = {
   create?: Prisma.XOR<Prisma.TutorCreateWithoutTutorSessionsInput, Prisma.TutorUncheckedCreateWithoutTutorSessionsInput>
   connectOrCreate?: Prisma.TutorCreateOrConnectWithoutTutorSessionsInput
@@ -517,7 +496,6 @@ export type TutorCreateWithoutUserInput = {
   experience?: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  categories?: Prisma.CategoryCreateNestedManyWithoutTutorInput
   tutorSessions?: Prisma.TutorSessionCreateNestedManyWithoutTutorInput
 }
 
@@ -529,7 +507,6 @@ export type TutorUncheckedCreateWithoutUserInput = {
   experience?: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutTutorInput
   tutorSessions?: Prisma.TutorSessionUncheckedCreateNestedManyWithoutTutorInput
 }
 
@@ -557,77 +534,11 @@ export type TutorUpdateWithoutUserInput = {
   experience?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  categories?: Prisma.CategoryUpdateManyWithoutTutorNestedInput
   tutorSessions?: Prisma.TutorSessionUpdateManyWithoutTutorNestedInput
 }
 
 export type TutorUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  designation?: Prisma.StringFieldUpdateOperationsInput | string
-  degree?: Prisma.StringFieldUpdateOperationsInput | string
-  isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  experience?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  categories?: Prisma.CategoryUncheckedUpdateManyWithoutTutorNestedInput
-  tutorSessions?: Prisma.TutorSessionUncheckedUpdateManyWithoutTutorNestedInput
-}
-
-export type TutorCreateWithoutCategoriesInput = {
-  id?: string
-  designation: string
-  degree: string
-  isBanned?: boolean
-  experience?: number
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutTutorsInput
-  tutorSessions?: Prisma.TutorSessionCreateNestedManyWithoutTutorInput
-}
-
-export type TutorUncheckedCreateWithoutCategoriesInput = {
-  id?: string
-  userId: string
-  designation: string
-  degree: string
-  isBanned?: boolean
-  experience?: number
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  tutorSessions?: Prisma.TutorSessionUncheckedCreateNestedManyWithoutTutorInput
-}
-
-export type TutorCreateOrConnectWithoutCategoriesInput = {
-  where: Prisma.TutorWhereUniqueInput
-  create: Prisma.XOR<Prisma.TutorCreateWithoutCategoriesInput, Prisma.TutorUncheckedCreateWithoutCategoriesInput>
-}
-
-export type TutorUpsertWithoutCategoriesInput = {
-  update: Prisma.XOR<Prisma.TutorUpdateWithoutCategoriesInput, Prisma.TutorUncheckedUpdateWithoutCategoriesInput>
-  create: Prisma.XOR<Prisma.TutorCreateWithoutCategoriesInput, Prisma.TutorUncheckedCreateWithoutCategoriesInput>
-  where?: Prisma.TutorWhereInput
-}
-
-export type TutorUpdateToOneWithWhereWithoutCategoriesInput = {
-  where?: Prisma.TutorWhereInput
-  data: Prisma.XOR<Prisma.TutorUpdateWithoutCategoriesInput, Prisma.TutorUncheckedUpdateWithoutCategoriesInput>
-}
-
-export type TutorUpdateWithoutCategoriesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  designation?: Prisma.StringFieldUpdateOperationsInput | string
-  degree?: Prisma.StringFieldUpdateOperationsInput | string
-  isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  experience?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutTutorsNestedInput
-  tutorSessions?: Prisma.TutorSessionUpdateManyWithoutTutorNestedInput
-}
-
-export type TutorUncheckedUpdateWithoutCategoriesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
   degree?: Prisma.StringFieldUpdateOperationsInput | string
   isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -646,7 +557,6 @@ export type TutorCreateWithoutTutorSessionsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutTutorsInput
-  categories?: Prisma.CategoryCreateNestedManyWithoutTutorInput
 }
 
 export type TutorUncheckedCreateWithoutTutorSessionsInput = {
@@ -658,7 +568,6 @@ export type TutorUncheckedCreateWithoutTutorSessionsInput = {
   experience?: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutTutorInput
 }
 
 export type TutorCreateOrConnectWithoutTutorSessionsInput = {
@@ -686,7 +595,6 @@ export type TutorUpdateWithoutTutorSessionsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutTutorsNestedInput
-  categories?: Prisma.CategoryUpdateManyWithoutTutorNestedInput
 }
 
 export type TutorUncheckedUpdateWithoutTutorSessionsInput = {
@@ -698,7 +606,6 @@ export type TutorUncheckedUpdateWithoutTutorSessionsInput = {
   experience?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  categories?: Prisma.CategoryUncheckedUpdateManyWithoutTutorNestedInput
 }
 
 
@@ -707,12 +614,10 @@ export type TutorUncheckedUpdateWithoutTutorSessionsInput = {
  */
 
 export type TutorCountOutputType = {
-  categories: number
   tutorSessions: number
 }
 
 export type TutorCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  categories?: boolean | TutorCountOutputTypeCountCategoriesArgs
   tutorSessions?: boolean | TutorCountOutputTypeCountTutorSessionsArgs
 }
 
@@ -724,13 +629,6 @@ export type TutorCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extens
    * Select specific fields to fetch from the TutorCountOutputType
    */
   select?: Prisma.TutorCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * TutorCountOutputType without action
- */
-export type TutorCountOutputTypeCountCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CategoryWhereInput
 }
 
 /**
@@ -751,7 +649,6 @@ export type TutorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  categories?: boolean | Prisma.Tutor$categoriesArgs<ExtArgs>
   tutorSessions?: boolean | Prisma.Tutor$tutorSessionsArgs<ExtArgs>
   _count?: boolean | Prisma.TutorCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tutor"]>
@@ -794,7 +691,6 @@ export type TutorSelectScalar = {
 export type TutorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "designation" | "degree" | "isBanned" | "experience" | "createdAt" | "updatedAt", ExtArgs["result"]["tutor"]>
 export type TutorInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  categories?: boolean | Prisma.Tutor$categoriesArgs<ExtArgs>
   tutorSessions?: boolean | Prisma.Tutor$tutorSessionsArgs<ExtArgs>
   _count?: boolean | Prisma.TutorCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -809,7 +705,6 @@ export type $TutorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   name: "Tutor"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
-    categories: Prisma.$CategoryPayload<ExtArgs>[]
     tutorSessions: Prisma.$TutorSessionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1216,7 +1111,6 @@ readonly fields: TutorFieldRefs;
 export interface Prisma__TutorClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  categories<T extends Prisma.Tutor$categoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tutor$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tutorSessions<T extends Prisma.Tutor$tutorSessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tutor$tutorSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TutorSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1648,30 +1542,6 @@ export type TutorDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Limit how many Tutors to delete.
    */
   limit?: number
-}
-
-/**
- * Tutor.categories
- */
-export type Tutor$categoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Category
-   */
-  select?: Prisma.CategorySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Category
-   */
-  omit?: Prisma.CategoryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CategoryInclude<ExtArgs> | null
-  where?: Prisma.CategoryWhereInput
-  orderBy?: Prisma.CategoryOrderByWithRelationInput | Prisma.CategoryOrderByWithRelationInput[]
-  cursor?: Prisma.CategoryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CategoryScalarFieldEnum | Prisma.CategoryScalarFieldEnum[]
 }
 
 /**

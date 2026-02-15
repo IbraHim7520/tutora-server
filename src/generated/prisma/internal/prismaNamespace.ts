@@ -1119,7 +1119,6 @@ export type TutorScalarFieldEnum = (typeof TutorScalarFieldEnum)[keyof typeof Tu
 export const CategoryScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  tutorId: 'tutorId',
   description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1134,7 +1133,7 @@ export const TutorSessionScalarFieldEnum = {
   description: 'description',
   date: 'date',
   fromTime: 'fromTime',
-  toTole: 'toTole',
+  toTime: 'toTime',
   sessionFee: 'sessionFee',
   status: 'status',
   categoryId: 'categoryId',
@@ -1256,6 +1255,20 @@ export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+/**
  * Reference to a field of type 'SessionStatus'
  */
 export type EnumSessionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SessionStatus'>
@@ -1280,20 +1293,6 @@ export type EnumBookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'BookingStatus[]'
  */
 export type ListEnumBookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BookingStatus[]'>
-    
-
-
-/**
- * Reference to a field of type 'Float'
- */
-export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-/**
- * Reference to a field of type 'Float[]'
- */
-export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 /**

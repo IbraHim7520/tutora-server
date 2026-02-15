@@ -40,7 +40,7 @@ export type TutorSessionMinAggregateOutputType = {
   description: string | null
   date: Date | null
   fromTime: Date | null
-  toTole: Date | null
+  toTime: Date | null
   sessionFee: number | null
   status: $Enums.SessionStatus | null
   categoryId: string | null
@@ -55,7 +55,7 @@ export type TutorSessionMaxAggregateOutputType = {
   description: string | null
   date: Date | null
   fromTime: Date | null
-  toTole: Date | null
+  toTime: Date | null
   sessionFee: number | null
   status: $Enums.SessionStatus | null
   categoryId: string | null
@@ -70,7 +70,7 @@ export type TutorSessionCountAggregateOutputType = {
   description: number
   date: number
   fromTime: number
-  toTole: number
+  toTime: number
   sessionFee: number
   status: number
   categoryId: number
@@ -95,7 +95,7 @@ export type TutorSessionMinAggregateInputType = {
   description?: true
   date?: true
   fromTime?: true
-  toTole?: true
+  toTime?: true
   sessionFee?: true
   status?: true
   categoryId?: true
@@ -110,7 +110,7 @@ export type TutorSessionMaxAggregateInputType = {
   description?: true
   date?: true
   fromTime?: true
-  toTole?: true
+  toTime?: true
   sessionFee?: true
   status?: true
   categoryId?: true
@@ -125,7 +125,7 @@ export type TutorSessionCountAggregateInputType = {
   description?: true
   date?: true
   fromTime?: true
-  toTole?: true
+  toTime?: true
   sessionFee?: true
   status?: true
   categoryId?: true
@@ -227,7 +227,7 @@ export type TutorSessionGroupByOutputType = {
   description: string
   date: Date
   fromTime: Date
-  toTole: Date
+  toTime: Date
   sessionFee: number
   status: $Enums.SessionStatus
   categoryId: string
@@ -265,8 +265,8 @@ export type TutorSessionWhereInput = {
   description?: Prisma.StringFilter<"TutorSession"> | string
   date?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
   fromTime?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
-  toTole?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
-  sessionFee?: Prisma.IntFilter<"TutorSession"> | number
+  toTime?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
+  sessionFee?: Prisma.FloatFilter<"TutorSession"> | number
   status?: Prisma.EnumSessionStatusFilter<"TutorSession"> | $Enums.SessionStatus
   categoryId?: Prisma.StringFilter<"TutorSession"> | string
   tutorId?: Prisma.StringFilter<"TutorSession"> | string
@@ -283,7 +283,7 @@ export type TutorSessionOrderByWithRelationInput = {
   description?: Prisma.SortOrder
   date?: Prisma.SortOrder
   fromTime?: Prisma.SortOrder
-  toTole?: Prisma.SortOrder
+  toTime?: Prisma.SortOrder
   sessionFee?: Prisma.SortOrder
   status?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
@@ -304,8 +304,8 @@ export type TutorSessionWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringFilter<"TutorSession"> | string
   date?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
   fromTime?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
-  toTole?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
-  sessionFee?: Prisma.IntFilter<"TutorSession"> | number
+  toTime?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
+  sessionFee?: Prisma.FloatFilter<"TutorSession"> | number
   status?: Prisma.EnumSessionStatusFilter<"TutorSession"> | $Enums.SessionStatus
   categoryId?: Prisma.StringFilter<"TutorSession"> | string
   tutorId?: Prisma.StringFilter<"TutorSession"> | string
@@ -322,7 +322,7 @@ export type TutorSessionOrderByWithAggregationInput = {
   description?: Prisma.SortOrder
   date?: Prisma.SortOrder
   fromTime?: Prisma.SortOrder
-  toTole?: Prisma.SortOrder
+  toTime?: Prisma.SortOrder
   sessionFee?: Prisma.SortOrder
   status?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
@@ -345,8 +345,8 @@ export type TutorSessionScalarWhereWithAggregatesInput = {
   description?: Prisma.StringWithAggregatesFilter<"TutorSession"> | string
   date?: Prisma.DateTimeWithAggregatesFilter<"TutorSession"> | Date | string
   fromTime?: Prisma.DateTimeWithAggregatesFilter<"TutorSession"> | Date | string
-  toTole?: Prisma.DateTimeWithAggregatesFilter<"TutorSession"> | Date | string
-  sessionFee?: Prisma.IntWithAggregatesFilter<"TutorSession"> | number
+  toTime?: Prisma.DateTimeWithAggregatesFilter<"TutorSession"> | Date | string
+  sessionFee?: Prisma.FloatWithAggregatesFilter<"TutorSession"> | number
   status?: Prisma.EnumSessionStatusWithAggregatesFilter<"TutorSession"> | $Enums.SessionStatus
   categoryId?: Prisma.StringWithAggregatesFilter<"TutorSession"> | string
   tutorId?: Prisma.StringWithAggregatesFilter<"TutorSession"> | string
@@ -360,7 +360,7 @@ export type TutorSessionCreateInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   createdAt?: Date | string
@@ -376,7 +376,7 @@ export type TutorSessionUncheckedCreateInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   categoryId: string
@@ -392,8 +392,8 @@ export type TutorSessionUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -408,8 +408,8 @@ export type TutorSessionUncheckedUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -424,7 +424,7 @@ export type TutorSessionCreateManyInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   categoryId: string
@@ -439,8 +439,8 @@ export type TutorSessionUpdateManyMutationInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -452,8 +452,8 @@ export type TutorSessionUncheckedUpdateManyInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -477,7 +477,7 @@ export type TutorSessionCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   date?: Prisma.SortOrder
   fromTime?: Prisma.SortOrder
-  toTole?: Prisma.SortOrder
+  toTime?: Prisma.SortOrder
   sessionFee?: Prisma.SortOrder
   status?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
@@ -496,7 +496,7 @@ export type TutorSessionMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   date?: Prisma.SortOrder
   fromTime?: Prisma.SortOrder
-  toTole?: Prisma.SortOrder
+  toTime?: Prisma.SortOrder
   sessionFee?: Prisma.SortOrder
   status?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
@@ -511,7 +511,7 @@ export type TutorSessionMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   date?: Prisma.SortOrder
   fromTime?: Prisma.SortOrder
-  toTole?: Prisma.SortOrder
+  toTime?: Prisma.SortOrder
   sessionFee?: Prisma.SortOrder
   status?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
@@ -613,6 +613,14 @@ export type TutorSessionUncheckedUpdateManyWithoutCategoryNestedInput = {
   deleteMany?: Prisma.TutorSessionScalarWhereInput | Prisma.TutorSessionScalarWhereInput[]
 }
 
+export type FloatFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type EnumSessionStatusFieldUpdateOperationsInput = {
   set?: $Enums.SessionStatus
 }
@@ -637,7 +645,7 @@ export type TutorSessionCreateWithoutTutorInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   createdAt?: Date | string
@@ -652,7 +660,7 @@ export type TutorSessionUncheckedCreateWithoutTutorInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   categoryId: string
@@ -696,8 +704,8 @@ export type TutorSessionScalarWhereInput = {
   description?: Prisma.StringFilter<"TutorSession"> | string
   date?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
   fromTime?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
-  toTole?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
-  sessionFee?: Prisma.IntFilter<"TutorSession"> | number
+  toTime?: Prisma.DateTimeFilter<"TutorSession"> | Date | string
+  sessionFee?: Prisma.FloatFilter<"TutorSession"> | number
   status?: Prisma.EnumSessionStatusFilter<"TutorSession"> | $Enums.SessionStatus
   categoryId?: Prisma.StringFilter<"TutorSession"> | string
   tutorId?: Prisma.StringFilter<"TutorSession"> | string
@@ -711,7 +719,7 @@ export type TutorSessionCreateWithoutCategoryInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   createdAt?: Date | string
@@ -726,7 +734,7 @@ export type TutorSessionUncheckedCreateWithoutCategoryInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   tutorId: string
@@ -767,7 +775,7 @@ export type TutorSessionCreateWithoutBookingsInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   createdAt?: Date | string
@@ -782,7 +790,7 @@ export type TutorSessionUncheckedCreateWithoutBookingsInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   categoryId: string
@@ -813,8 +821,8 @@ export type TutorSessionUpdateWithoutBookingsInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -828,8 +836,8 @@ export type TutorSessionUncheckedUpdateWithoutBookingsInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -843,7 +851,7 @@ export type TutorSessionCreateManyTutorInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   categoryId: string
@@ -857,8 +865,8 @@ export type TutorSessionUpdateWithoutTutorInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -872,8 +880,8 @@ export type TutorSessionUncheckedUpdateWithoutTutorInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -887,8 +895,8 @@ export type TutorSessionUncheckedUpdateManyWithoutTutorInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -901,7 +909,7 @@ export type TutorSessionCreateManyCategoryInput = {
   description: string
   date: Date | string
   fromTime: Date | string
-  toTole: Date | string
+  toTime: Date | string
   sessionFee: number
   status?: $Enums.SessionStatus
   tutorId: string
@@ -915,8 +923,8 @@ export type TutorSessionUpdateWithoutCategoryInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -930,8 +938,8 @@ export type TutorSessionUncheckedUpdateWithoutCategoryInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -945,8 +953,8 @@ export type TutorSessionUncheckedUpdateManyWithoutCategoryInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fromTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  toTole?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sessionFee?: Prisma.IntFieldUpdateOperationsInput | number
+  toTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionFee?: Prisma.FloatFieldUpdateOperationsInput | number
   status?: Prisma.EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -990,7 +998,7 @@ export type TutorSessionSelect<ExtArgs extends runtime.Types.Extensions.Internal
   description?: boolean
   date?: boolean
   fromTime?: boolean
-  toTole?: boolean
+  toTime?: boolean
   sessionFee?: boolean
   status?: boolean
   categoryId?: boolean
@@ -1009,7 +1017,7 @@ export type TutorSessionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   description?: boolean
   date?: boolean
   fromTime?: boolean
-  toTole?: boolean
+  toTime?: boolean
   sessionFee?: boolean
   status?: boolean
   categoryId?: boolean
@@ -1026,7 +1034,7 @@ export type TutorSessionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   description?: boolean
   date?: boolean
   fromTime?: boolean
-  toTole?: boolean
+  toTime?: boolean
   sessionFee?: boolean
   status?: boolean
   categoryId?: boolean
@@ -1043,7 +1051,7 @@ export type TutorSessionSelectScalar = {
   description?: boolean
   date?: boolean
   fromTime?: boolean
-  toTole?: boolean
+  toTime?: boolean
   sessionFee?: boolean
   status?: boolean
   categoryId?: boolean
@@ -1052,7 +1060,7 @@ export type TutorSessionSelectScalar = {
   updatedAt?: boolean
 }
 
-export type TutorSessionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "date" | "fromTime" | "toTole" | "sessionFee" | "status" | "categoryId" | "tutorId" | "createdAt" | "updatedAt", ExtArgs["result"]["tutorSession"]>
+export type TutorSessionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "date" | "fromTime" | "toTime" | "sessionFee" | "status" | "categoryId" | "tutorId" | "createdAt" | "updatedAt", ExtArgs["result"]["tutorSession"]>
 export type TutorSessionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   tutor?: boolean | Prisma.TutorDefaultArgs<ExtArgs>
@@ -1081,7 +1089,7 @@ export type $TutorSessionPayload<ExtArgs extends runtime.Types.Extensions.Intern
     description: string
     date: Date
     fromTime: Date
-    toTole: Date
+    toTime: Date
     sessionFee: number
     status: $Enums.SessionStatus
     categoryId: string
@@ -1519,8 +1527,8 @@ export interface TutorSessionFieldRefs {
   readonly description: Prisma.FieldRef<"TutorSession", 'String'>
   readonly date: Prisma.FieldRef<"TutorSession", 'DateTime'>
   readonly fromTime: Prisma.FieldRef<"TutorSession", 'DateTime'>
-  readonly toTole: Prisma.FieldRef<"TutorSession", 'DateTime'>
-  readonly sessionFee: Prisma.FieldRef<"TutorSession", 'Int'>
+  readonly toTime: Prisma.FieldRef<"TutorSession", 'DateTime'>
+  readonly sessionFee: Prisma.FieldRef<"TutorSession", 'Float'>
   readonly status: Prisma.FieldRef<"TutorSession", 'SessionStatus'>
   readonly categoryId: Prisma.FieldRef<"TutorSession", 'String'>
   readonly tutorId: Prisma.FieldRef<"TutorSession", 'String'>
