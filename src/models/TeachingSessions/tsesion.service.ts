@@ -45,12 +45,60 @@ const deleteSession = async (sessionId: string) => {
 
 const getAllSessions = async () => {
     return await prisma.tutorSession.findMany({
+        include:{
+            category:{
+                select:{
+                    id:true,
+                    title:true,
+                    description:true
+                }
+            },
+            tutor:{
+                select:{
+                    experience:true,
+                    designation:true,
+                    degree:true,
+                    isBanned:true,
+                    user:{
+                        select:{
+                            name:true,
+                            email:true,
+                            image:true
+                        }
+                    }
+                }
+            }
+        },
         orderBy: { date: "desc" },
     });
 };
 
 const getSessionById = async (sessionId: string) => {
     const session = await prisma.tutorSession.findUnique({
+        include:{
+            category:{
+                select:{
+                    id:true,
+                    title:true,
+                    description:true
+                }
+            },
+            tutor:{
+                select:{
+                    degree:true,
+                    designation:true,
+                    isBanned:true,
+                    experience:true,
+                    user:{
+                        select:{
+                            name:true,
+                            email:true,
+                            image:true
+                        }
+                    }
+                }
+            }
+        },
         where: { id: sessionId },
     });
 

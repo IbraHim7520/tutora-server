@@ -3,6 +3,7 @@ import { IBooking } from "../../Types/interface";
 
 
 const createBooking = async (data: IBooking) => {
+    //TODO: Check create booking user is trying to bookig  his own session or not
     return await prisma.bookings.create({
         data: {
             userId: data.userId,

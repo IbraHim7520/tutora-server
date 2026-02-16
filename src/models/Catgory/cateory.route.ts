@@ -23,7 +23,7 @@ catRouter.delete(
 
 
 catRouter.get(
-  "/categories",
+  "/all-categories",
   categoryController.getAllCategories
 );
 

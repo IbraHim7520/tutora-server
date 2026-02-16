@@ -1,9 +1,11 @@
 import { Router } from "express";
 import { userController } from "./user.controller";
+import { verifyRequest } from "../../middlewere/verifyRequest";
+import { UserRoles } from "../../Types/interface";
 
 const userRouter = Router();
 
-userRouter.get('/all-users' , userController.getAllUserControle)
+userRouter.get('/all-users' , verifyRequest("STUDENT", "ADMIN") , userController.getAllUserControle)
 
 userRouter.get('/user/:userId', userController.getOneUserControle)
 

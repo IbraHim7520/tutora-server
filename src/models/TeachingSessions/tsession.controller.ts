@@ -51,7 +51,7 @@ const deleteSession = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: "Teaching session soft-deleted successfully",
+      message: "Teaching session deleted successfully",
       data: result,
     });
   } catch (error) {

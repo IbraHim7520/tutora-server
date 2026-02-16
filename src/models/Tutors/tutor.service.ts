@@ -68,6 +68,7 @@ const getALlTutors = async()=>{
     include: {
       user:{
          select: {
+          name:true,
           email: true,
           role: true,
           image: true,
@@ -81,7 +82,7 @@ const getALlTutors = async()=>{
           description:true,
           date:true,
           fromTime:true,
-          toTole:true,
+          toTime:true,
           sessionFee:true,
         }
       }

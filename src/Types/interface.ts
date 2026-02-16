@@ -54,3 +54,9 @@ export interface IBooking {
   categoryId: string,
   status?: BookingStatus
 }
+
+export enum UserRoles {
+    ADMIN,
+    STUDENT,
+    TEACHER
+}
