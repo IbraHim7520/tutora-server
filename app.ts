@@ -12,10 +12,10 @@ const app:Application = express()
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: true,
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Application/json"],
   })
 );
 app.use(cookieParser());
@@ -26,8 +26,8 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json())
 
 
-app.use('/api/v1/tutors/', tutorRouter)
-app.use('/api/v1/users/', userRouter)
+app.use('/api/v1/tutors', tutorRouter)
+app.use('/api/v1/users', userRouter)
 app.use('/api/v1/categories', catRouter);
 app.use('/api/v1/tutoring-sessions', sessionRouter)
 app.use('/api/v1/bookings', bookingRouter);
