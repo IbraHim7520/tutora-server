@@ -8,14 +8,13 @@ import userRouter from './src/models/Users/user.route';
 import catRouter from './src/models/Catgory/cateory.route';
 import sessionRouter from './src/models/TeachingSessions/tsession.route';
 import bookingRouter from './src/models/Bookings/booking.route';
+import env from './src/configs/env';
 const app:Application = express()
 
 app.use(
   cors({
-    origin: true,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Application/json"],
+    origin: [ env.FRONTEN_URL , "http://localhost:3000"],
+    credentials: true
   })
 );
 app.use(cookieParser());

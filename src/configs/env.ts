@@ -6,7 +6,9 @@ const env = {
     BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET as string,
     BETTER_AUTH_URL: process.env.BETTER_AUTH_URL as string,
     JWT_SECRET: process.env.JWT_SECRET as string,
-    NODE_ENV: process.env.NODE_ENV as string
+    NODE_ENV: process.env.NODE_ENV as string,
+    FRONTEN_URL: process.env.FRONTEN_URL as string
+    
 }
 
 export default env;

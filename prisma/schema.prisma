@@ -19,6 +19,12 @@ enum UserRole {
   TEACHER
 }
 
+enum UserStatus {
+  ACTIVE
+  BLOCKED
+  DELETED
+}
+
 model User {
   id            String     @id
   name          String
@@ -26,7 +32,8 @@ model User {
   emailVerified Boolean    @default(false)
   role          UserRole   @default(STUDENT)
   isBanned      Boolean    @default(false)
-  image         String?
+  image         String?    
+  status        UserStatus @default(ACTIVE)
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
   sessions      Session[]
@@ -87,30 +94,30 @@ model Verification {
 }
 
 model Tutor {
-  id          String   @id @default(uuid())
-  userId      String   @unique
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id          String     @id @default(uuid())
+  userId      String     @unique
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   designation String
+  status      UserStatus @default(ACTIVE)
   degree      String
-  isBanned    Boolean  @default(false)
-  experience  Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
+  isBanned    Boolean    @default(false)
+  experience  Int        @default(0)
+  contact     String?
+  adress      String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 
   tutorSessions TutorSession[]
 }
 
 model Category {
-  id          String   @id  @default(uuid())
-  title       String
-  description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
+  id            String         @id @default(uuid())
+  title         String
+  description   String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   tutorSessions TutorSession[]
-
-  bookings Bookings[]
+  bookings      Bookings[]
 }
 
 enum SessionStatus {
@@ -150,7 +157,7 @@ model Bookings {
   id     String @id @default(uuid())
   
   userId String
-  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   tutorSessionId String
   tutorSession   TutorSession @relation(fields: [tutorSessionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
@@ -165,5 +172,3 @@ model Bookings {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
-

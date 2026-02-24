@@ -85,6 +85,7 @@ export const UserScalarFieldEnum = {
   role: 'role',
   isBanned: 'isBanned',
   image: 'image',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -141,9 +142,12 @@ export const TutorScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   designation: 'designation',
+  status: 'status',
   degree: 'degree',
   isBanned: 'isBanned',
   experience: 'experience',
+  contact: 'contact',
+  adress: 'adress',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

@@ -2,11 +2,11 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "./prisma";
 import env from "../configs/env";
-import { UserRole } from "../generated/prisma/enums";
+import { UserRole, UserStatus } from "../generated/prisma/enums";
 
 export const auth = betterAuth({
   baseURL: env.BETTER_AUTH_URL,
-
+  trustedOrigins: [env.FRONTEN_URL , "http://localhost:3000"],
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
@@ -22,6 +22,10 @@ export const auth = betterAuth({
       isBanned: {
         type: "boolean",
         default: false,
+      },
+      status:{
+        type: "string",
+        default: UserStatus.ACTIVE
       },
     },
   },
