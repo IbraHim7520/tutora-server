@@ -3,7 +3,24 @@ import { ITeachingSessionData, ITeachingSessionDataUpdate } from "../../Types/in
 
 
 const createSession = async (data:ITeachingSessionData) => {
-    return await prisma.tutorSession.create({
+   const formatedDate = new Date(data.date);
+   const fromDateTime = new Date(`${data.date}T${data.fromTime}:00`);
+    const toDateTime = new Date(`${data.date}T${data.toTime}:00`);
+   data.date = formatedDate;
+   data.fromTime = fromDateTime;
+   data.toTime = toDateTime;
+
+   const userId = data.tutorId;
+   const tutorData = await prisma.tutor.findFirst({
+    where:{
+        user:{
+            id: userId
+        }
+    }
+   })
+   if(!tutorData) throw new Error("You are not registered as tutor!!");
+   data.tutorId = tutorData.id;
+  return await prisma.tutorSession.create({
         data:{
             title: data.title,
             description: data.description,
@@ -107,11 +124,42 @@ const getSessionById = async (sessionId: string) => {
     return session;
 };
 
+const getSessionsByTutorId = async(tutorEmail:string) =>{
+    try {
+        const userData = await prisma.user.findUnique({
+            where: {
+                email: tutorEmail
+            },
+            include:{
+                tutors:{
+                    select:{
+                        id:true
+                    }
+                }
+            }
+        })
+        if(!userData){
+            throw new Error("You're Unauthorized!!");
+        }
 
+        const tutorId = userData?.tutors?.id;
+        if(!tutorId) throw new Error("Invalid Tutor Id!!");
+
+        const sessionsData = await prisma.tutorSession.findMany({
+            where: {
+                tutorId: tutorId
+            }
+        })
+        return sessionsData;
+    } catch (error) {
+        throw error
+    }
+}
 export const teachingSessionService = {
     createSession,
     updateSession,
     deleteSession,
     getAllSessions,
     getSessionById,
+    getSessionsByTutorId
 };

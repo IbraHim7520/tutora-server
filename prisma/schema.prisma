@@ -32,7 +32,7 @@ model User {
   emailVerified Boolean    @default(false)
   role          UserRole   @default(STUDENT)
   isBanned      Boolean    @default(false)
-  image         String?    
+  image         String?     
   status        UserStatus @default(ACTIVE)
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
@@ -101,9 +101,9 @@ model Tutor {
   status      UserStatus @default(ACTIVE)
   degree      String
   isBanned    Boolean    @default(false)
-  experience  Int        @default(0)
+  experience  String     
   contact     String?
-  adress      String?
+  address      String?
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 

@@ -12,6 +12,7 @@ const createSession = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
+    console.log(error)
     res.status(500).send({
         success: false,
         message: "Internal Server Error!",
@@ -101,7 +102,32 @@ const getSessionById = async (req: Request, res: Response) => {
     })
   }
 };
-
+const getSessionsByTeacherId = async(req:Request , res:Response)=>{
+  const tutoremail = req.user?.email;
+  try {
+    const tutorsSessionsdata = await teachingSessionService.getSessionsByTutorId(tutoremail as string);
+    if(tutorsSessionsdata.length > 0){
+      res.status(200).send({
+        success:true,
+        message: "Sessions retrived successfully!",
+        data: tutorsSessionsdata
+      })
+    }else{
+      res.status(200).send({
+        success:false,
+        message: "No Session available yet!",
+        data: []
+      })
+    }
+  } catch (error) {
+    res.status(401).send({
+        success:false,
+        message: "Internal server error!",
+        data: null,
+        error
+      })
+  }
+}
 
 export const teachingSessionController = {
   createSession,
@@ -109,4 +135,5 @@ export const teachingSessionController = {
   deleteSession,   
   getAllSessions,
   getSessionById,
+  getSessionsByTeacherId
 };

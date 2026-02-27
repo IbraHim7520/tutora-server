@@ -21,10 +21,10 @@ export const verifyRequest = (...allowedRoles: string[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const cookiesData = req.cookies;
-      console.log(cookiesData)
+     
       // 🔹 Get session (pass req if your auth lib requires it)
       const userSession = await auth.api.getSession({headers: req.headers as Record<string , string>});
-      console.log(userSession)
+    
       //  No session
       if (!userSession) {
         return res.status(401).json({

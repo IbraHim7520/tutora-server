@@ -17,15 +17,15 @@ export const auth = betterAuth({
     additionalFields: {
       role: {
         type: "string",
-        default: UserRole.STUDENT, // must match Prisma enum
+        defaultValue: UserRole.STUDENT, // must match Prisma enum
       },
       isBanned: {
         type: "boolean",
-        default: false,
+        defaultValue: false,
       },
       status:{
         type: "string",
-        default: UserStatus.ACTIVE
+        defaultValue: UserStatus.ACTIVE
       },
     },
   },

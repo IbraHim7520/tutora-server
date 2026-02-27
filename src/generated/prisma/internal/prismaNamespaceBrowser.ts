@@ -147,7 +147,7 @@ export const TutorScalarFieldEnum = {
   isBanned: 'isBanned',
   experience: 'experience',
   contact: 'contact',
-  adress: 'adress',
+  address: 'address',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

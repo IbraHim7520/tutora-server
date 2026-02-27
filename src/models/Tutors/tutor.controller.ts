@@ -1,27 +1,35 @@
 import { Request, Response } from "express"
 import { tutorService } from "./tutor.service";
+import { ITutorProfile, ITutorSignUp } from "../../../interfaces/Tutor.interface";
 
-const createTutorControl = async(req:Request , res:Response)=>{
-    const teacherData = req.body;
-    try {
-        const response = await tutorService.createTutor(teacherData);
-        if(response.user){
-            return res.status(201).send({
-                success : true,
-                message : "Tutor Created Successfully.",
-                data: response
-            })
-        }
-    } catch (error:any) {
-        return res.status(201).send({
-                success : false,
-                message : "Failed to Create Tutor!",
-                data: null,
-                error
-        })
-    }
+const createTutorControl = async (req: Request, res: Response) => {
+  const teacherData = req.body;
+const tutorProfileData = {
+    userId : teacherData.userId,
+    designation:teacherData.designation,
+    degree:teacherData.degree,
+    experience:teacherData.experience,
+    contact:teacherData.contact,
+    address:teacherData.address
 }
+  try {
+    
+    const tutorCreateResponse = await tutorService.createTutor(tutorProfileData);
+    return res.status(201).send({
+      success: true,
+      message: "Tutor Created Successfully",
+      data: tutorCreateResponse,
+    });
 
+  } catch (error) {
+    return res.status(500).send({
+      success: false,
+      message: "Failed to Create Tutor",
+      data: null,
+      error,
+    });
+  }
+};
 
 const getAllTutors = async(req:Request , res:Response)=>{
     try {
@@ -91,9 +99,32 @@ const updateTutorController = async(req:Request , res:Response)=>{
     }
 }
 
+
+const getOneTutor = async(req:Request, res:Response) =>{
+  const userId = req.params.userId;
+  if(!userId) return res.status(404).send({success: false, message: "Invalid User Id!"});
+
+  try {
+    const tutorProfile = await tutorService.getTutorProfile(userId as string)
+    res.status(200).send({
+        success: true,
+        message: "Tutor Profile retrived.",
+        data: tutorProfile
+    })
+  } catch (error) {
+    res.status(401).send({
+        success: false,
+        message: "Internal Server Error!",
+        data: null,
+        error
+    })
+  }
+
+}
 export const tutorController = {
 createTutorControl,
 getAllTutors,
 deleteTutorControlle,
-updateTutorController
+updateTutorController,
+getOneTutor
 }

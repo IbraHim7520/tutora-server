@@ -11,4 +11,7 @@ sessionRouter.delete("/session-delete/:sessionId",verifyRequest(UserRole.ADMIN, 
 sessionRouter.get("/sessions/all", teachingSessionController.getAllSessions);
 sessionRouter.get("/session/:sessionId",  teachingSessionController.getSessionById);
 
+
+sessionRouter.get('/tutor-sessions', verifyRequest(UserRole.TEACHER), teachingSessionController.getSessionsByTeacherId);
+
 export default sessionRouter;

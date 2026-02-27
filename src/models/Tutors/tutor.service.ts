@@ -1,63 +1,22 @@
 import { prisma } from "../../lib/prisma";
 import { auth } from "../../lib/auth";
-import { UserRole } from "../../generated/prisma/enums";
 import { IUpdateTutorData } from "../../Types/interface";
+import { ITutorProfile, ITutorSignUp } from "../../../interfaces/Tutor.interface";
+import { UserRole } from "../../generated/prisma/enums";
 
-interface ITutor {
-  userId?: string;
-  name: string;
-  email: string;
-  designation: string;
-  password: string;
-  degree: string;
-  experience?: number;
-}
 
-const createTutor = async (payload: ITutor) => {
-  const { name, email, password, degree, experience, designation } = payload;
 
+const createTutor = async (tutorProfileData: ITutorProfile) => {
+    
   try {
-    const userAsTutor = await auth.api.signUpEmail({
-      body: {
-        name,
-        email,
-        password,
-        role: UserRole.TEACHER as string, 
-        isBanned: false,
-      },
-    });
-
-    if (!userAsTutor) throw new Error("Failed to register tutor!");
-
-    payload.userId = userAsTutor.user.id;
-
-    const tutorProfile = await prisma.tutor.create({
-      data: {
-        userId: payload.userId!,
-        designation,
-        degree,
-        experience: experience ?? 0,  // default to 0 if undefined
-        createdAt: new Date()
-      },
-    });
-
-    return { user: userAsTutor.user, profile: tutorProfile };
+    const response = await prisma.tutor.create({
+      data: tutorProfileData
+    })
+    return response
   } catch (error) {
-    console.error("Error creating tutor:", error);
-    if (payload.userId) {
-      try {
-        await prisma.user.delete({
-            where: {
-                email: email
-            }
-        });
-      } catch {}
-    }
-
-    throw error;
+    throw error
   }
 };
-
 
 
 const getALlTutors = async()=>{
@@ -142,16 +101,27 @@ const updateTutor = async(tutorId:string , tutorData: IUpdateTutorData)=>{
     },data:{
       designation: tutorData.designation,
       degree: tutorData.degree,
-      experience: Number(tutorData.experience)
+      experience: tutorData.experience
     }
   })
 
   return updateResponse
 }
+const getTutorProfile = async(userId:string)=>{
+  const tutorProfile = await prisma.tutor.findFirst({
+    where: {
+      user:{
+        id: userId
+      }
+    }
+  })
 
+  return tutorProfile;
+}
 export const tutorService = {
   createTutor,
   getALlTutors,
   deleteTutorProfile,
-  updateTutor
+  updateTutor,
+  getTutorProfile
 };
