@@ -2,30 +2,30 @@ import { prisma } from "../../lib/prisma";
 import { ITeachingSessionData, ITeachingSessionDataUpdate } from "../../Types/interface";
 
 
-const createSession = async (data:ITeachingSessionData) => {
-   const formatedDate = new Date(data.date);
-   const fromDateTime = new Date(`${data.date}T${data.fromTime}:00`);
+const createSession = async (data: ITeachingSessionData) => {
+    const formatedDate = new Date(data.date);
+    const fromDateTime = new Date(`${data.date}T${data.fromTime}:00`);
     const toDateTime = new Date(`${data.date}T${data.toTime}:00`);
-   data.date = formatedDate;
-   data.fromTime = fromDateTime;
-   data.toTime = toDateTime;
+    data.date = formatedDate;
+    data.fromTime = fromDateTime;
+    data.toTime = toDateTime;
 
-   const userId = data.tutorId;
-   const tutorData = await prisma.tutor.findFirst({
-    where:{
-        user:{
-            id: userId
+    const userId = data.tutorId;
+    const tutorData = await prisma.tutor.findFirst({
+        where: {
+            user: {
+                id: userId
+            }
         }
-    }
-   })
-   if(!tutorData) throw new Error("You are not registered as tutor!!");
-   data.tutorId = tutorData.id;
-  return await prisma.tutorSession.create({
-        data:{
+    })
+    if (!tutorData) throw new Error("You are not registered as tutor!!");
+    data.tutorId = tutorData.id;
+    return await prisma.tutorSession.create({
+        data: {
             title: data.title,
             description: data.description,
             date: data.date,
-            fromTime:data.fromTime,
+            fromTime: data.fromTime,
             toTime: data.toTime,
             tutorId: data.tutorId,
             categoryId: data.categoryId,
@@ -40,11 +40,11 @@ const updateSession = async (
 ) => {
     return await prisma.tutorSession.update({
         where: { id: sessionId },
-        data : {
+        data: {
             title: updatedData.title,
             description: updatedData.description,
             date: updatedData.date,
-            fromTime:updatedData.fromTime,
+            fromTime: updatedData.fromTime,
             toTime: updatedData.toTime,
             tutorId: updatedData.tutorId,
             categoryId: updatedData.categoryId,
@@ -62,25 +62,25 @@ const deleteSession = async (sessionId: string) => {
 
 const getAllSessions = async () => {
     return await prisma.tutorSession.findMany({
-        include:{
-            category:{
-                select:{
-                    id:true,
-                    title:true,
-                    description:true
+        include: {
+            category: {
+                select: {
+                    id: true,
+                    title: true,
+                    description: true
                 }
             },
-            tutor:{
-                select:{
-                    experience:true,
-                    designation:true,
-                    degree:true,
-                    isBanned:true,
-                    user:{
-                        select:{
-                            name:true,
-                            email:true,
-                            image:true
+            tutor: {
+                select: {
+                    experience: true,
+                    designation: true,
+                    degree: true,
+                    isBanned: true,
+                    user: {
+                        select: {
+                            name: true,
+                            email: true,
+                            image: true
                         }
                     }
                 }
@@ -92,25 +92,25 @@ const getAllSessions = async () => {
 
 const getSessionById = async (sessionId: string) => {
     const session = await prisma.tutorSession.findUnique({
-        include:{
-            category:{
-                select:{
-                    id:true,
-                    title:true,
-                    description:true
+        include: {
+            category: {
+                select: {
+                    id: true,
+                    title: true,
+                    description: true
                 }
             },
-            tutor:{
-                select:{
-                    degree:true,
-                    designation:true,
-                    isBanned:true,
-                    experience:true,
-                    user:{
-                        select:{
-                            name:true,
-                            email:true,
-                            image:true
+            tutor: {
+                select: {
+                    degree: true,
+                    designation: true,
+                    isBanned: true,
+                    experience: true,
+                    user: {
+                        select: {
+                            name: true,
+                            email: true,
+                            image: true
                         }
                     }
                 }
@@ -124,30 +124,54 @@ const getSessionById = async (sessionId: string) => {
     return session;
 };
 
-const getSessionsByTutorId = async(tutorEmail:string) =>{
+const getSessionsByTutorId = async (tutorEmail: string) => {
     try {
         const userData = await prisma.user.findUnique({
             where: {
                 email: tutorEmail
             },
-            include:{
-                tutors:{
-                    select:{
-                        id:true
+            include: {
+                tutors: {
+                    select: {
+                        id: true
                     }
                 }
             }
         })
-        if(!userData){
+        if (!userData) {
             throw new Error("You're Unauthorized!!");
         }
 
         const tutorId = userData?.tutors?.id;
-        if(!tutorId) throw new Error("Invalid Tutor Id!!");
+        if (!tutorId) throw new Error("Invalid Tutor Id!!");
 
         const sessionsData = await prisma.tutorSession.findMany({
+            orderBy: {
+                createdAt: 'desc'
+            },
             where: {
-                tutorId: tutorId
+                tutorId: tutorId,
+            },
+            include: {
+                category: {
+                    select: {
+                        title: true,
+                        id: true
+                    }
+                },
+                bookings: {
+                    select: {
+                        id: true,
+                        user: {
+                            select: {
+                                email: true,
+                                name: true,
+                                image: true,
+                                status: true
+                            }
+                        }
+                    }
+                }
             }
         })
         return sessionsData;

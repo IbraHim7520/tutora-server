@@ -123,6 +123,24 @@ const deleteBooking = async (req: Request, res: Response) => {
   }
 };
 
+const getBookingsBySessionId  =async(req:Request , res:Response) =>{
+  const sessionId = req.params.sessionId;
+  try {
+    const data = await bookingService.getBookingBySessionId(sessionId as string);
+    return res.status(200).send({
+      success: true,
+      message: "Bookings Retrived.",
+      data: data
+    })
+  } catch (error) {
+    return res.status(401).send({
+      success: true,
+      message: "Failed to get bookings information.",
+      data: null,
+      error
+    })
+  }
+}
 // ✅ Export all functions as object
 export const bookingController = {
   createBooking,
@@ -131,4 +149,5 @@ export const bookingController = {
   getBookingById,
   updateBooking,
   deleteBooking,
+  getBookingsBySessionId
 };

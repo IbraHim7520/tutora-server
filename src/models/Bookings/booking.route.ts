@@ -12,4 +12,5 @@ bookingRouter.get("/booking/:bookingId", verifyRequest(UserRole.STUDENT , UserRo
 bookingRouter.patch("/booking-update/:bookingId",verifyRequest(UserRole.STUDENT , UserRole.ADMIN , UserRole.TEACHER) ,bookingController.updateBooking);
 bookingRouter.delete("/booking-delete/:bookingId",verifyRequest(UserRole.STUDENT , UserRole.ADMIN , UserRole.TEACHER) ,bookingController.deleteBooking);
 
+bookingRouter.get('/:sessionId' , verifyRequest(UserRole.TEACHER, UserRole.ADMIN) ,bookingController.getBookingsBySessionId)
 export default bookingRouter;

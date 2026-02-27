@@ -57,3 +57,8 @@ export type TutorSession = Prisma.TutorSessionModel
  * 
  */
 export type Bookings = Prisma.BookingsModel
+/**
+ * Model Review
+ * 
+ */
+export type Review = Prisma.ReviewModel

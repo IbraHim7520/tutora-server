@@ -76,6 +76,38 @@ const deleteBooking = async (bookingId: string) => {
 };
 
 
+
+const getBookingBySessionId = async(sessionId: string) =>{
+    return await prisma.bookings.findMany({
+        where:{
+            tutorSession:{
+                id: sessionId
+            },
+        },
+        include:{
+            user:{
+                select:{
+                    id:true,
+                    name:true,
+                    email:true
+                }
+            },
+            tutorSession:{
+                select:{
+                    title:true,
+                    category:{
+                        select:{
+                            id:true,
+                            title:true
+                        }
+                    }
+                }
+            },
+        }
+    })
+}
+
+
 export const bookingService = {
     createBooking,
     getAllBookings,
@@ -83,4 +115,5 @@ export const bookingService = {
     getBookingById,
     updateBooking,
     deleteBooking,
+    getBookingBySessionId
 };

@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
 import { tutorService } from "./tutor.service";
-import { ITutorProfile, ITutorSignUp } from "../../../interfaces/Tutor.interface";
 
 const createTutorControl = async (req: Request, res: Response) => {
   const teacherData = req.body;

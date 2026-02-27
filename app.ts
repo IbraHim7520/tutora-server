@@ -9,6 +9,7 @@ import catRouter from './src/models/Catgory/cateory.route';
 import sessionRouter from './src/models/TeachingSessions/tsession.route';
 import bookingRouter from './src/models/Bookings/booking.route';
 import env from './src/configs/env';
+import reviewRouter from './src/models/Reviews/review.route';
 const app:Application = express()
 
 app.use(
@@ -30,4 +31,5 @@ app.use('/api/v1/users', userRouter)
 app.use('/api/v1/categories', catRouter);
 app.use('/api/v1/tutoring-sessions', sessionRouter)
 app.use('/api/v1/bookings', bookingRouter);
+app.use('api/v1/ratings', reviewRouter);
 export default app
