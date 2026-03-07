@@ -11,4 +11,6 @@ tutorRouter.delete('/tutor/delete-tutor/:tutorId' , verifyRequest(UserRole.ADMIN
 tutorRouter.patch('/tutor/update-tutor/:tutorId' ,verifyRequest(UserRole.ADMIN, UserRole.TEACHER) , tutorController.updateTutorController)
 tutorRouter.get('/tutor/:userId', tutorController.getOneTutor)
 
+
+tutorRouter.get('/profile', verifyRequest(UserRole.TEACHER), tutorController.getTutorProfile);
 export default tutorRouter;

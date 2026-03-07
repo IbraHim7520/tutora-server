@@ -35,7 +35,12 @@ catRouter.get(
 
 catRouter.get(
   "/category/:categoryId",
+  verifyRequest(UserRole.ADMIN),
   categoryController.getSingleCategory
 );
 
+catRouter.get('/category/all-category/general', verifyRequest(UserRole.ADMIN , UserRole.TEACHER), categoryController.getCategoriesForGeneral)
+
+
+catRouter.patch('/:id/toggle-status', verifyRequest(UserRole.ADMIN),  categoryController.UpdateCategoryStatus )
 export default catRouter;

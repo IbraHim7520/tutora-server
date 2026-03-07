@@ -3,6 +3,7 @@ import { ITeachingSessionData, ITeachingSessionDataUpdate } from "../../Types/in
 
 
 const createSession = async (data: ITeachingSessionData) => {
+    
     const formatedDate = new Date(data.date);
     const fromDateTime = new Date(`${data.date}T${data.fromTime}:00`);
     const toDateTime = new Date(`${data.date}T${data.toTime}:00`);
@@ -10,16 +11,16 @@ const createSession = async (data: ITeachingSessionData) => {
     data.fromTime = fromDateTime;
     data.toTime = toDateTime;
 
-    const userId = data.tutorId;
+   
     const tutorData = await prisma.tutor.findFirst({
         where: {
-            user: {
-                id: userId
-            }
+            userId: data.tutorId
         }
     })
+
     if (!tutorData) throw new Error("You are not registered as tutor!!");
     data.tutorId = tutorData.id;
+    
     return await prisma.tutorSession.create({
         data: {
             title: data.title,
@@ -34,10 +35,18 @@ const createSession = async (data: ITeachingSessionData) => {
     });
 };
 
+
 const updateSession = async (
     sessionId: string,
     updatedData: ITeachingSessionDataUpdate
 ) => {
+    
+    const formatedDate = new Date(updatedData.date!);
+    const fromDateTime = new Date(`${updatedData.date!}T${updatedData.fromTime}:00`);
+    const toDateTime = new Date(`${updatedData.date!}T${updatedData.toTime}:00`);
+    updatedData.date = formatedDate;
+    updatedData.fromTime = fromDateTime;
+    updatedData.toTime = toDateTime;
     return await prisma.tutorSession.update({
         where: { id: sessionId },
         data: {
@@ -62,6 +71,9 @@ const deleteSession = async (sessionId: string) => {
 
 const getAllSessions = async () => {
     return await prisma.tutorSession.findMany({
+        where:{
+            status: 'APPROVED'
+        },
         include: {
             category: {
                 select: {
@@ -179,11 +191,29 @@ const getSessionsByTutorId = async (tutorEmail: string) => {
         throw error
     }
 }
+const toggleSessionAvailability =async(sessionId:string)=>{
+    try {
+        const sessionStats = await prisma.tutorSession.findUnique({where: {id: sessionId}});
+        if(!sessionStats) throw new Error("Session not found!!");
+        const session = await prisma.tutorSession.update({
+            where:{
+                id: sessionId
+            },
+            data:{
+                status: sessionStats?.status === "APPROVED" ? "DISCONTINUE" : "APPROVED"
+            }
+        })
+        return session;
+    } catch (error) {
+        return error
+    }
+}
 export const teachingSessionService = {
     createSession,
     updateSession,
     deleteSession,
     getAllSessions,
     getSessionById,
-    getSessionsByTutorId
+    getSessionsByTutorId,
+    toggleSessionAvailability
 };

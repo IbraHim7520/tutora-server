@@ -4,6 +4,7 @@ import { ICreateCategory } from "../../Types/interface";
 
 // ✅ Create
 const createCategory = async (data:ICreateCategory) => {
+  
   return await prisma.category.create({
     data: {
         title: data.title,
@@ -35,9 +36,26 @@ const deleteCategory = async (categoryId: string) => {
 
 
 const getAllCategories = async () => {
-  return await prisma.category.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  const categories = await prisma.category.findMany({orderBy: {createdAt: 'desc'}});
+  const totalCategories = await prisma.category.count();
+  const activeCategories = await prisma.category.count({
+    where:{
+      status: 'ACTIVE'
+    }
+  })
+  const inActiveCatgories = await prisma.category.count({
+    where:{
+      status: 'INACTIVE'
+    }
+  })
+
+  return{
+    categories,
+    totalCategories,
+    activeCategories,
+    inActiveCatgories
+  }
+  
 };
 
 
@@ -53,6 +71,34 @@ const getSingleCategory = async (categoryId: string) => {
   return category;
 };
 
+const getCategoriesForGeneral = async()=>{
+  return await prisma.category.findMany({
+    where:{
+      status: 'ACTIVE'
+    }
+  })
+}
+
+
+const UpdateCategoryStatus = async (id: string) => {
+  
+  const category = await prisma.category.findUnique({
+    where: { id }
+  });
+
+  if (!category) {
+    throw new Error("Category not found");
+  }
+
+  // 2️⃣ Toggle status
+  return await prisma.category.update({
+    where: { id },
+    data: {
+      status: category.status === "ACTIVE" ? "INACTIVE" : "ACTIVE"
+    }
+  });
+};
+
 
 export const CategoryService = {
   createCategory,
@@ -60,4 +106,6 @@ export const CategoryService = {
   deleteCategory,
   getAllCategories,
   getSingleCategory,
+  getCategoriesForGeneral,
+  UpdateCategoryStatus
 };

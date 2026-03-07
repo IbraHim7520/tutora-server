@@ -63,11 +63,32 @@ const deleteAUser = async (userId: string) => {
 
     return result;
 };
+const getProfileData = async (userEmail: string) => {
+  const userData = await prisma.user.findUnique({
+    where: {
+      email: userEmail,
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      createdAt: true,
+      updatedAt: true,
+      role: true,
+      image: true,
 
+      bookings: true,
+      reviews: true,
+    },
+  });
+
+  return userData;
+};
 export const userServices = {
     getAllUsers,
     getOneUser,
     updateUserDataAdmin,
     updateUserDataUser,
-    deleteAUser
+    deleteAUser,
+    getProfileData
 }

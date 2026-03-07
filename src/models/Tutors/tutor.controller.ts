@@ -120,10 +120,36 @@ const getOneTutor = async(req:Request, res:Response) =>{
   }
 
 }
+
+
+
+const getTutorProfile = async(req:Request , res:Response)=>{
+    
+    try {
+        const user = req.user;
+        
+        if(!user) return res.status(404).send({success: false, message: "User Not Found!"});
+        console.log(user?.email)
+        const tutorProfileData = await tutorService.getTutorProfileData(user?.email as string);
+        return res.status(200).send({
+           success: true,
+           message: "Tutor Profile retrieved.",
+           data: tutorProfileData
+       })
+    } catch (error) {
+        return res.status(500).send({
+            success: false,
+            message: "Internal Server Error!",
+            data: null,
+            error
+        })
+    }
+}
 export const tutorController = {
 createTutorControl,
 getAllTutors,
 deleteTutorControlle,
 updateTutorController,
-getOneTutor
+getOneTutor,
+getTutorProfile
 }

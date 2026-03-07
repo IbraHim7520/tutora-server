@@ -118,10 +118,58 @@ const getTutorProfile = async(userId:string)=>{
 
   return tutorProfile;
 }
+
+const getTutorProfileData = async (Tutoremail: string) =>{
+  
+  const tutorAsUser = await prisma.user.findUnique({
+    where:{
+      email: Tutoremail
+    }
+  })
+  
+  const userId = tutorAsUser?.id as string;
+  const tutorData = await prisma.tutor.findUnique({
+    where:{
+      userId: userId,
+    },
+    include:{
+      user: {
+        select:{
+          email:true,
+          image:true,
+          role:true,
+          name:true,
+          isBanned:true
+        }
+      },
+      tutorSessions:{
+        select:{
+          _count: true,
+          bookings:{
+            select:{
+              id:true,
+            },
+          },
+          category:{
+            select:{ id:true}
+          },
+          reviews:{
+            select:{
+              id:true,
+            }
+          }
+        }
+      }
+    }
+  })
+  
+  return tutorData;
+}
 export const tutorService = {
   createTutor,
   getALlTutors,
   deleteTutorProfile,
   updateTutor,
-  getTutorProfile
+  getTutorProfile,
+  getTutorProfileData
 };

@@ -125,10 +125,30 @@ const deleteUserControle = async(req: Request, res: Response) => {
         })
     }
 }
+
+const getProfileControle = async(req: Request, res: Response) => {
+    const userEmail = req.user?.email as string;
+    try {
+        const response = await userServices.getProfileData(userEmail);
+        return res.status(200).send({
+            success: true,
+            message: "Profile retrieved successfully",
+            data: response
+        });
+    }catch (error) {        
+        return res.status(500).send({
+            success: false,
+            message: "Internal server error!",
+            data: null,
+            error
+        })
+    }
+}
 export const userController = {
     getAllUserControle,
     getOneUserControle,
     updateUserControllerAdmin,
     updateUserControllerUser,
-    deleteUserControle
+    deleteUserControle,
+    getProfileControle
 }

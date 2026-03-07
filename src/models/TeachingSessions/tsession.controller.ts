@@ -128,12 +128,30 @@ const getSessionsByTeacherId = async(req:Request , res:Response)=>{
       })
   }
 }
-
+const toggleSessionAvailability = (req:Request , res:Response)=>{
+  const {sessionId} = req.params;
+  try {
+    const result = teachingSessionService.toggleSessionAvailability(sessionId as string);
+    res.status(200).send({
+      success:true,
+      message: "Session availability toggled successfully!",
+      data: result
+    })
+  }catch (error) {
+    res.status(401).send({        
+        success:false,
+        message: "Internal server error!",
+        data: null,
+        error
+      })
+  }
+}
 export const teachingSessionController = {
   createSession,
   updateSession,
   deleteSession,   
   getAllSessions,
   getSessionById,
-  getSessionsByTeacherId
+  getSessionsByTeacherId,
+  toggleSessionAvailability
 };

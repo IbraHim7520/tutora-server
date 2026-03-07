@@ -100,6 +100,41 @@ const getSingleCategory = async (
   }
 };
 
+const getCategoriesForGeneral = async(req:Request , res:Response)=>{
+  try {
+    const categories = await CategoryService.getCategoriesForGeneral()
+    res.status(200).send({
+      success: true,
+      data: categories
+    })
+  } catch (error) {
+    res.status(404).send({
+      success: false,
+      data: null,
+      error
+    })
+  }
+}
+
+
+const UpdateCategoryStatus = async(req:Request , res:Response)=>{
+  try {
+    const {id} = req.params;
+    const result = await CategoryService.UpdateCategoryStatus(id as string)
+    res.status(200).send({
+      success: true,
+      data: result
+    })
+  }
+    catch (error) {
+    res.status(404).send({
+      success: false,
+      data: null,
+      error
+    })
+  }
+}
+
 
 export const categoryController = {
   createCategory,
@@ -107,4 +142,6 @@ export const categoryController = {
   deleteCategory,
   getAllCategories,
   getSingleCategory,
-};
+  getCategoriesForGeneral,
+  UpdateCategoryStatus
+}

@@ -27,10 +27,18 @@ export const UserStatus = {
 export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
 
 
+export const CategoryStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+} as const
+
+export type CategoryStatus = (typeof CategoryStatus)[keyof typeof CategoryStatus]
+
+
 export const SessionStatus = {
   APPROVED: 'APPROVED',
   BANNED: 'BANNED',
-  PENDING: 'PENDING'
+  DISCONTINUE: 'DISCONTINUE'
 } as const
 
 export type SessionStatus = (typeof SessionStatus)[keyof typeof SessionStatus]

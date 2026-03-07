@@ -13,5 +13,5 @@ sessionRouter.get("/session/:sessionId",  teachingSessionController.getSessionBy
 
 
 sessionRouter.get('/tutor-sessions', verifyRequest(UserRole.TEACHER), teachingSessionController.getSessionsByTeacherId);
-
+sessionRouter.patch('/session/toggle/:sessionId', verifyRequest(UserRole.TEACHER, UserRole.ADMIN), teachingSessionController.toggleSessionAvailability);
 export default sessionRouter;

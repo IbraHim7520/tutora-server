@@ -21,4 +21,6 @@ userRouter.delete('/user-delete/:userId', verifyRequest(UserRole.ADMIN) ,userCon
 
 // userRouter.get('/user/:userId', userController.getOneUserControle)
 
+userRouter.get('/profile', verifyRequest(UserRole.ADMIN, UserRole.TEACHER , UserRole.STUDENT), userController.getProfileControle)
+
 export default userRouter
