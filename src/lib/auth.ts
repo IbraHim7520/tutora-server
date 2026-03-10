@@ -6,7 +6,7 @@ import { UserRole, UserStatus } from "../generated/prisma/enums";
 
 export const auth = betterAuth({
   baseURL: env.BETTER_AUTH_URL,
-  trustedOrigins: [env.FRONTEN_URL , "http://localhost:3000"],
+  trustedOrigins: [env.FRONTEN_URL , "http://localhost:3000" , "https://mentorix-pi.vercel.app"],
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),

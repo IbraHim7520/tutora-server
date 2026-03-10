@@ -14,7 +14,7 @@ const app:Application = express()
 
 app.use(
   cors({
-    origin: [ env.FRONTEN_URL , "http://localhost:3000"],
+    origin: [ env.FRONTEN_URL , "http://localhost:3000", "https://mentorix-pi.vercel.app"],
     credentials: true
   })
 );
