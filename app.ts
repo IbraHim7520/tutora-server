@@ -22,7 +22,7 @@ app.use(
     credentials: true
   })
 );
-app.options("*", cors()) // Enable pre-flight for all routes
+//app.options("*", cors()) // Enable pre-flight for all routes
 app.use(cookieParser());
 
 //Authentication Routes-------------
