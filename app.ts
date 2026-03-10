@@ -14,10 +14,15 @@ const app:Application = express()
 
 app.use(
   cors({
-    origin: [ env.FRONTEN_URL , "http://localhost:3000", "https://mentorix-pi.vercel.app"],
+    origin: [
+      env.FRONTEN_URL,
+      "http://localhost:3000",
+      "https://mentorix-pi.vercel.app"
+    ],
     credentials: true
   })
 );
+app.options("*", cors()) // Enable pre-flight for all routes
 app.use(cookieParser());
 
 //Authentication Routes-------------
