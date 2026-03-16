@@ -29,9 +29,7 @@ const getALlTutors = async()=>{
          select: {
           name:true,
           email: true,
-          role: true,
           image: true,
-          isBanned: true
         }
       },
       tutorSessions: {

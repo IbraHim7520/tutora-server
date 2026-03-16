@@ -1,5 +1,6 @@
+import { BookingStatus } from "../../generated/prisma/enums";
 import { prisma } from "../../lib/prisma";
-import { IBooking } from "../../Types/interface";
+import { IBooking, IBookingStatus } from "../../Types/interface";
 
 
 const createBooking = async (data: IBooking) => {
@@ -27,11 +28,27 @@ const getAllBookings = async () => {
 
 
 const getMyBookings = async (userId: string) => {
+   
     return await prisma.bookings.findMany({
-        where: { userId: userId },
+        where: { userId: userId ,
+            status: BookingStatus.BOOKED || BookingStatus.COMPLETED
+        },
         include: {
-            tutorSession: true,
-            category: true,
+            tutorSession: {
+                select:{
+                    title:true,
+                    date:true,
+                    fromTime:true,
+                    toTime:true,
+                    id:true
+                }
+            },
+            category: {
+                select:{
+                    id:true,
+                    title:true
+                }
+            },
         },
         orderBy: { bookedAt: "desc" },
     });
@@ -56,17 +73,14 @@ const getBookingById = async (bookingId: string) => {
 
 const updateBooking = async (
     bookingId: string,
-    updateData: IBooking
+   data:IBookingStatus
 ) => {
     return await prisma.bookings.update({
-        where: { id: bookingId },
-        data: {
-            userId: updateData.userId,
-            tutorSessionId: updateData.tutorSessionId,
-            status: updateData.status,
-            categoryId: updateData.categoryId
-        },
-    });
+        where: {id: bookingId},
+        data:{
+            status: data.status
+        }
+    })
 };
 
 const deleteBooking = async (bookingId: string) => {

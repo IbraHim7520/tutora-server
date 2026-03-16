@@ -20,6 +20,49 @@ const getReviewsByTutorSessions = async(req:Request , res:Response)=>{
     }
 }
 
+const createReview = async(req:Request , res:Response)=>{
+  const reviewData = req.body
+  try {
+    const reviewResponse = await reviewService.postAReview(reviewData);
+
+    return res.status(201).send({
+      success: true,
+      message: "Review Submitted Successfully.",
+      data: reviewResponse
+    })
+  } catch (error) {
+    
+    return res.status(500).send({
+      success: false,
+      message: "Failed to submit review!!",
+      data: null,
+      error
+    })
+  }
+}
+
+
+const getMyReviews = async(req:Request , res:Response) =>{
+  const userId = req.params.userId as string
+  try {
+    const myReviews = await reviewService.getAllMyReviews(userId);
+    return res.status(200).send({
+      success: true,
+      message: "Review retrived successfully!",
+      data: myReviews
+    })
+  } catch (error) {
+     return res.status(500).send({
+      success: true,
+      message: "Internal Server error",
+      data: null,
+      error
+    })
+  }
+}
+
 export const reviewController = {
-    getReviewsByTutorSessions
+    getReviewsByTutorSessions,
+    createReview,
+    getMyReviews
 }

@@ -16,6 +16,7 @@ const getOneUser = async (userId: string) => {
 const updateUserDataAdmin = async (userId: string, userData: IUpdateUserAdmin) => {
     const isUserExists = await prisma.user.findUnique({ where: { id: userId } });
     if (!isUserExists) throw new Error("User is not Exists")
+    
     return await prisma.user.update({
         where: { id: userId },
         data: {

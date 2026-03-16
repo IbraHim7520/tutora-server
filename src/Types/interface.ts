@@ -55,8 +55,21 @@ export interface IBooking {
   status?: BookingStatus
 }
 
+export interface IBookingStatus {
+  status: 'COMPLETED' | 'CANCELED'
+}
+
 export enum UserRoles {
     ADMIN,
     STUDENT,
     TEACHER
+}
+
+
+
+export interface ICreateReview{
+    rating:number,
+    comment?:string,
+    tutorSessionId:string,
+    userId:string
 }

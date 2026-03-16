@@ -98,6 +98,7 @@ const getAllSessions = async () => {
                 }
             }
         },
+        
         orderBy: { date: "desc" },
     });
 };
