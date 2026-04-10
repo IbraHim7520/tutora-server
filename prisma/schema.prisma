@@ -25,6 +25,29 @@ enum UserStatus {
   DELETED
 }
 
+enum RequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum CategoryStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum SessionStatus {
+  APPROVED
+  BANNED
+  PENDING
+}
+
+enum BookingStatus {
+  BOOKED
+  CANCELED
+  COMPLETED
+}
+
 model User {
   id            String     @id
   name          String
@@ -110,10 +133,7 @@ model Tutor {
 
   tutorSessions TutorSession[]
 }
-enum CategoryStatus {
-  ACTIVE
-  INACTIVE
-}
+
 model Category {
   id            String         @id @default(uuid())
   title         String
@@ -125,11 +145,7 @@ model Category {
   bookings      Bookings[]
 }
 
-enum SessionStatus {
-  APPROVED
-  BANNED
-  DISCONTINUE
-}
+
 
 model TutorSession {
   id          String        @id @default(uuid())
@@ -139,7 +155,7 @@ model TutorSession {
   fromTime    DateTime
   toTime      DateTime
   sessionFee  Float
-  status      SessionStatus @default(APPROVED)
+  status      SessionStatus @default(PENDING)
   categoryId  String
   category    Category      @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
@@ -154,11 +170,7 @@ model TutorSession {
   reviews Review[]
 }
 
-enum BookingStatus {
-  BOOKED
-  CANCELED
-  COMPLETED
-}
+
 
 model Bookings {
   id     String @id @default(uuid())
