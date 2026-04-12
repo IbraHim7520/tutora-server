@@ -1856,6 +1856,11 @@ export type TutorSessionFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` TutorSessions.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of TutorSessions.
+   */
   distinct?: Prisma.TutorSessionScalarFieldEnum | Prisma.TutorSessionScalarFieldEnum[]
 }
 

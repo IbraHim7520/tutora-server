@@ -28,7 +28,7 @@ export type TutorMinAggregateOutputType = {
   id: string | null
   userId: string | null
   designation: string | null
-  status: $Enums.UserStatus | null
+  status: $Enums.RequestStatus | null
   degree: string | null
   isBanned: boolean | null
   experience: string | null
@@ -42,7 +42,7 @@ export type TutorMaxAggregateOutputType = {
   id: string | null
   userId: string | null
   designation: string | null
-  status: $Enums.UserStatus | null
+  status: $Enums.RequestStatus | null
   degree: string | null
   isBanned: boolean | null
   experience: string | null
@@ -187,7 +187,7 @@ export type TutorGroupByOutputType = {
   id: string
   userId: string
   designation: string
-  status: $Enums.UserStatus
+  status: $Enums.RequestStatus
   degree: string
   isBanned: boolean
   experience: string
@@ -222,7 +222,7 @@ export type TutorWhereInput = {
   id?: Prisma.StringFilter<"Tutor"> | string
   userId?: Prisma.StringFilter<"Tutor"> | string
   designation?: Prisma.StringFilter<"Tutor"> | string
-  status?: Prisma.EnumUserStatusFilter<"Tutor"> | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusFilter<"Tutor"> | $Enums.RequestStatus
   degree?: Prisma.StringFilter<"Tutor"> | string
   isBanned?: Prisma.BoolFilter<"Tutor"> | boolean
   experience?: Prisma.StringFilter<"Tutor"> | string
@@ -257,7 +257,7 @@ export type TutorWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.TutorWhereInput[]
   NOT?: Prisma.TutorWhereInput | Prisma.TutorWhereInput[]
   designation?: Prisma.StringFilter<"Tutor"> | string
-  status?: Prisma.EnumUserStatusFilter<"Tutor"> | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusFilter<"Tutor"> | $Enums.RequestStatus
   degree?: Prisma.StringFilter<"Tutor"> | string
   isBanned?: Prisma.BoolFilter<"Tutor"> | boolean
   experience?: Prisma.StringFilter<"Tutor"> | string
@@ -293,7 +293,7 @@ export type TutorScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
   designation?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
-  status?: Prisma.EnumUserStatusWithAggregatesFilter<"Tutor"> | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusWithAggregatesFilter<"Tutor"> | $Enums.RequestStatus
   degree?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
   isBanned?: Prisma.BoolWithAggregatesFilter<"Tutor"> | boolean
   experience?: Prisma.StringWithAggregatesFilter<"Tutor"> | string
@@ -306,7 +306,7 @@ export type TutorScalarWhereWithAggregatesInput = {
 export type TutorCreateInput = {
   id?: string
   designation: string
-  status?: $Enums.UserStatus
+  status?: $Enums.RequestStatus
   degree: string
   isBanned?: boolean
   experience: string
@@ -322,7 +322,7 @@ export type TutorUncheckedCreateInput = {
   id?: string
   userId: string
   designation: string
-  status?: $Enums.UserStatus
+  status?: $Enums.RequestStatus
   degree: string
   isBanned?: boolean
   experience: string
@@ -336,7 +336,7 @@ export type TutorUncheckedCreateInput = {
 export type TutorUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusFieldUpdateOperationsInput | $Enums.RequestStatus
   degree?: Prisma.StringFieldUpdateOperationsInput | string
   isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
   experience?: Prisma.StringFieldUpdateOperationsInput | string
@@ -352,7 +352,7 @@ export type TutorUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusFieldUpdateOperationsInput | $Enums.RequestStatus
   degree?: Prisma.StringFieldUpdateOperationsInput | string
   isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
   experience?: Prisma.StringFieldUpdateOperationsInput | string
@@ -367,7 +367,7 @@ export type TutorCreateManyInput = {
   id?: string
   userId: string
   designation: string
-  status?: $Enums.UserStatus
+  status?: $Enums.RequestStatus
   degree: string
   isBanned?: boolean
   experience: string
@@ -380,7 +380,7 @@ export type TutorCreateManyInput = {
 export type TutorUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusFieldUpdateOperationsInput | $Enums.RequestStatus
   degree?: Prisma.StringFieldUpdateOperationsInput | string
   isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
   experience?: Prisma.StringFieldUpdateOperationsInput | string
@@ -394,7 +394,7 @@ export type TutorUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusFieldUpdateOperationsInput | $Enums.RequestStatus
   degree?: Prisma.StringFieldUpdateOperationsInput | string
   isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
   experience?: Prisma.StringFieldUpdateOperationsInput | string
@@ -488,6 +488,10 @@ export type TutorUncheckedUpdateOneWithoutUserNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.TutorUpdateToOneWithWhereWithoutUserInput, Prisma.TutorUpdateWithoutUserInput>, Prisma.TutorUncheckedUpdateWithoutUserInput>
 }
 
+export type EnumRequestStatusFieldUpdateOperationsInput = {
+  set?: $Enums.RequestStatus
+}
+
 export type TutorCreateNestedOneWithoutTutorSessionsInput = {
   create?: Prisma.XOR<Prisma.TutorCreateWithoutTutorSessionsInput, Prisma.TutorUncheckedCreateWithoutTutorSessionsInput>
   connectOrCreate?: Prisma.TutorCreateOrConnectWithoutTutorSessionsInput
@@ -505,7 +509,7 @@ export type TutorUpdateOneRequiredWithoutTutorSessionsNestedInput = {
 export type TutorCreateWithoutUserInput = {
   id?: string
   designation: string
-  status?: $Enums.UserStatus
+  status?: $Enums.RequestStatus
   degree: string
   isBanned?: boolean
   experience: string
@@ -519,7 +523,7 @@ export type TutorCreateWithoutUserInput = {
 export type TutorUncheckedCreateWithoutUserInput = {
   id?: string
   designation: string
-  status?: $Enums.UserStatus
+  status?: $Enums.RequestStatus
   degree: string
   isBanned?: boolean
   experience: string
@@ -549,7 +553,7 @@ export type TutorUpdateToOneWithWhereWithoutUserInput = {
 export type TutorUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusFieldUpdateOperationsInput | $Enums.RequestStatus
   degree?: Prisma.StringFieldUpdateOperationsInput | string
   isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
   experience?: Prisma.StringFieldUpdateOperationsInput | string
@@ -563,7 +567,7 @@ export type TutorUpdateWithoutUserInput = {
 export type TutorUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusFieldUpdateOperationsInput | $Enums.RequestStatus
   degree?: Prisma.StringFieldUpdateOperationsInput | string
   isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
   experience?: Prisma.StringFieldUpdateOperationsInput | string
@@ -577,7 +581,7 @@ export type TutorUncheckedUpdateWithoutUserInput = {
 export type TutorCreateWithoutTutorSessionsInput = {
   id?: string
   designation: string
-  status?: $Enums.UserStatus
+  status?: $Enums.RequestStatus
   degree: string
   isBanned?: boolean
   experience: string
@@ -592,7 +596,7 @@ export type TutorUncheckedCreateWithoutTutorSessionsInput = {
   id?: string
   userId: string
   designation: string
-  status?: $Enums.UserStatus
+  status?: $Enums.RequestStatus
   degree: string
   isBanned?: boolean
   experience: string
@@ -621,7 +625,7 @@ export type TutorUpdateToOneWithWhereWithoutTutorSessionsInput = {
 export type TutorUpdateWithoutTutorSessionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusFieldUpdateOperationsInput | $Enums.RequestStatus
   degree?: Prisma.StringFieldUpdateOperationsInput | string
   isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
   experience?: Prisma.StringFieldUpdateOperationsInput | string
@@ -636,7 +640,7 @@ export type TutorUncheckedUpdateWithoutTutorSessionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  status?: Prisma.EnumRequestStatusFieldUpdateOperationsInput | $Enums.RequestStatus
   degree?: Prisma.StringFieldUpdateOperationsInput | string
   isBanned?: Prisma.BoolFieldUpdateOperationsInput | boolean
   experience?: Prisma.StringFieldUpdateOperationsInput | string
@@ -761,7 +765,7 @@ export type $TutorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: string
     userId: string
     designation: string
-    status: $Enums.UserStatus
+    status: $Enums.RequestStatus
     degree: string
     isBanned: boolean
     experience: string
@@ -1197,7 +1201,7 @@ export interface TutorFieldRefs {
   readonly id: Prisma.FieldRef<"Tutor", 'String'>
   readonly userId: Prisma.FieldRef<"Tutor", 'String'>
   readonly designation: Prisma.FieldRef<"Tutor", 'String'>
-  readonly status: Prisma.FieldRef<"Tutor", 'UserStatus'>
+  readonly status: Prisma.FieldRef<"Tutor", 'RequestStatus'>
   readonly degree: Prisma.FieldRef<"Tutor", 'String'>
   readonly isBanned: Prisma.FieldRef<"Tutor", 'Boolean'>
   readonly experience: Prisma.FieldRef<"Tutor", 'String'>
@@ -1401,6 +1405,11 @@ export type TutorFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Skip the first `n` Tutors.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Tutors.
+   */
   distinct?: Prisma.TutorScalarFieldEnum | Prisma.TutorScalarFieldEnum[]
 }
 

@@ -3,13 +3,10 @@ import cors from 'cors'
 import { toNodeHandler } from 'better-auth/node'
 import { auth } from './src/lib/auth'
 import cookieParser from "cookie-parser";
-import tutorRouter from './src/models/Tutors/tutor.route'
-import userRouter from './src/models/Users/user.route';
-import catRouter from './src/models/Catgory/cateory.route';
-import sessionRouter from './src/models/TeachingSessions/tsession.route';
-import bookingRouter from './src/models/Bookings/booking.route';
 import env from './src/configs/env';
-import reviewRouter from './src/models/Reviews/review.route';
+import adminRouter from './src/models/ADMIN/admin.route';
+import userRouter from './src/models/USER/user.route';
+import teacherRouter from './src/models/TEACHER/teacher.route';
 const app:Application = express()
 
 const allowOrigin = [
@@ -53,10 +50,7 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json())
 
 
-app.use('/api/v1/tutors', tutorRouter)
-app.use('/api/v1/users', userRouter)
-app.use('/api/v1/categories', catRouter);
-app.use('/api/v1/tutoring-sessions', sessionRouter)
-app.use('/api/v1/bookings', bookingRouter);
-app.use('/api/v1/ratings', reviewRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/admins", adminRouter)
+app.use("/api/v1/teachers", teacherRouter)
 export default app

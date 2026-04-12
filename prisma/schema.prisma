@@ -37,9 +37,8 @@ enum CategoryStatus {
 }
 
 enum SessionStatus {
-  APPROVED
-  BANNED
-  PENDING
+  CREATED
+  FINISHED
 }
 
 enum BookingStatus {
@@ -122,12 +121,12 @@ model Tutor {
   userId      String     @unique
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   designation String
-  status      UserStatus @default(ACTIVE)
+  status      RequestStatus @default(PENDING)
   degree      String
   isBanned    Boolean    @default(false)
-  experience  String     
-  contact     String?
-  address      String?
+  experience  String?    
+  contact     String
+  address     String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 
@@ -154,8 +153,9 @@ model TutorSession {
   date        DateTime
   fromTime    DateTime
   toTime      DateTime
+
   sessionFee  Float
-  status      SessionStatus @default(PENDING)
+  status      SessionStatus @default(CREATED)
   categoryId  String
   category    Category      @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
